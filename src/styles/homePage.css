@@ -1,0 +1,14 @@
+.contenido-home-fullscream{}
+.contenido-home-smallscream{
+    display: none;
+}
+
+
+@media (max-width: 940px) {
+  .contenido-home-fullscream{
+    display: none;
+  }
+.contenido-home-smallscream{
+    display: block;
+}
+}

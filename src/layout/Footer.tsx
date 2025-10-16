@@ -4,7 +4,7 @@ const Footer = () => (
   <Box
     component="footer"
     sx={{
-      py: 2,
+      py: 1,
       textAlign: 'center',
       bgcolor: 'primary.main', // mismo color que el Header
       color: 'background.default', // texto claro sobre fondo oscuro
