@@ -11,7 +11,7 @@ interface UseFormSubmitOptions {
   onError?: () => void
 }
 
-export const useFormSubmit = ({
+export const useFormSubmit = <T extends Record<string, unknown>>({
   encrypt = false,
   userKey,
   endpoint,
@@ -21,19 +21,20 @@ export const useFormSubmit = ({
   const [queryStatus, setQueryStatus] = useState<SubmitStatus>('idle')
 
   useEffect(() => {
-    //este useEffect es para ver cuando cambia el estado de la solicitud
     console.log('🔄 Estado actualizado:', queryStatus)
   }, [queryStatus])
 
-  const submit = async (formData: Record<string, string>) => {
-    let payload = { ...formData }
+  const submit = async (formData: T) => {
+    let payload: Record<string, unknown> = { ...formData }
 
     if (encrypt && userKey) {
       payload = Object.fromEntries(
-        Object.entries(formData).map(([key, value]) => [
-          key,
-          encryptField(value, userKey),
-        ])
+        Object.entries(formData).map(([key, value]) => {
+          if (typeof value === 'string') {
+            return [key, encryptField(value, userKey)]
+          }
+          return [key, value]
+        })
       )
     }
 
