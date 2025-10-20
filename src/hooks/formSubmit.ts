@@ -5,6 +5,7 @@ type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
 
 interface UseFormSubmitOptions {
   encrypt?: boolean
+  method: "PUT" | "PATCH" | "POST" | "GET"
   userKey?: string
   endpoint?: string
   onSuccess?: () => void
@@ -13,6 +14,7 @@ interface UseFormSubmitOptions {
 
 export const useFormSubmit = <T extends Record<string, unknown>>({
   encrypt = false,
+  method,
   userKey,
   endpoint,
   onSuccess,
@@ -40,6 +42,7 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
 
     console.log('📦 Payload listo para enviar:', payload)
     console.log('🛒 Lo vamos a enviar a ', endpoint)
+    console.log('🛒 Con el metodo ', method)
     console.log('🧾 Datos originales:', formData)
 
     try {
@@ -48,7 +51,7 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
 
       // Simulación de fetch:
       // await fetch(endpoint!, {
-      //   method: 'POST',
+      //   method: method,
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify(payload),
       // })

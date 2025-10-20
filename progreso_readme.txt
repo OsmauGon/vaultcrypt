@@ -24,11 +24,21 @@ Cuarto creamos los enlaces en Header.tsx para navegar entre las paginas"
 ## Dia 4: Hoy vamos a trabajar en LoginPage, integrear react-hook-form, zod y crear el hook formSubmit
 
 Para empezar a crear la carpeta SCHEMA, y su finalida es almacenar en archivos escalables los esquemas que usaremos para a la hora de validar formularios con zod. Primeramente dentro de esta nueva carpeta vamos a crear el archivo loginSchema.ts. Sabemos que a la hora de loguear un usuario vamos a solicitarle el email y la contraseña, y eso mismo va a conformar el esquema que vamos a exportar.
-Lo siguiente es crear el hook useFormSubmit para eso crearemos la carpeta HOOKS y dentro el archivo formSubmit.ts. Aqui estara el hook que usaremos cuando  se envie al backend el formulario de login, nuevo registro, editar registro nueva cuenta y editar cuenta. He tomado la logica en formSubmit.ts del proyecto VaultCrypt1 y la he adaptado para pegarla en formSubmit.ts del proyecto VaultCrypt2. Debido a que la primero de las 2 encriptaciones que hace el proyecto esta en este hook tambien tomare la carpeta UTILS del proyecto VaultCrypt1 que contiene el archivo encryption.ts y lo pegare en VaultCrypt2 para tener la funcion encriptadora displonible para el hook formSubmit. Es importante aclarar que en encryption.ts se usa la libreria crypto-js asique debemos instalarla junto con su  tipado para trabajar con TypeScript
+Lo siguiente es crear el hook useFormSubmit para eso crearemos la carpeta HOOKS y dentro el archivo formSubmit.ts. Aqui estara el hook que usaremos cuando  se envie al backend el formulario de login, nuevo registro, editar registro nueva cuenta y editar cuenta. He tomado la logica en formSubmit.ts del proyecto VaultCrypt1 y la he adaptado para pegarla en formSubmit.ts del proyecto VaultCrypt2. Debido a que la primero de las 2 encriptaciones que hace el proyecto esta en este hook tambien tomare la carpeta UTILS del proyecto VaultCrypt1 que contiene el archivo encryption.ts y lo pegare en VaultCrypt2 para tener la funcion encriptadora displonible para el hook formSubmit. Es importante aclarar que en encryption.ts se usa la libreria crypto-js asique debemos instalarla junto con su  tipado para trabajar con TypeScript. He agregado la propiedad "method" dentro del formSubmit para uqe se varie el metodo a usar seguin el componente (login/get, register/post y edit/put o patch)
 Ya tenemos un formulario de logueo funcional y que muestra un mensaje de exito
-Lo que sigue es crear el formulario de registro (para crear un nuevo usuario) y el formulario de edicion (para uqe un usuario edite sus datos). Cada formulario requiere un esuqema de zod para validaar nombre, email, clave y palabra secreta. Solo editSchema permitira agregar emails alternativos. Crearemos 2 nuevas paginas: RegisterPage y EditPage para contener los formularios respectivos pero en EditPage importaremos "useFieldArray" de react-hook-form
+Lo que sigue es crear el formulario de registro (para crear un nuevo usuario) y el formulario de edicion (para uqe un usuario edite sus datos). Cada formulario requiere un esuqema de zod para validaar nombre, email, clave y palabra secreta. Solo editSchema permitira agregar emails alternativos. Crearemos 2 nuevas paginas: RegisterPage y EditPage para contener los formularios respectivos pero en EditPage importaremos "useFieldArray" de react-form-hook pero por multiples uqejas se decidio cambiar a usar useState y ya.
+
+RegisterPage y EditPage ya estan construidos y funcionando. Falta probarlos bien
+
+## Dia 5: Hice 4 versiones de EditPage porque las primeras 3 no me convecian. La ultima que esta en vigencia es la que mas me gusta siendo que es una que combina todo lo estetico de mui material con cosas que si entiendo. 
+En EditPage 3 use codigo que no conocia lo que me hace perderme en la costruccion de la App.
+Lo hice en dos partes: primero EditPage4 que importa al componente EditForm que cree dentro de la carpeta COMPONENTES. EditPage4 usa un useState para setear a un objeto que va a servir como usuario simulado y luego se declara un useEffect paara poner al usuario Juan en el useState. Luego el componente funcional de EditPage retorna la importacion de EditForm.
+En EditForm declare dos useState: uno que almacene las credenciales iniciales del usuario logueado (initualUser) y otro que sea exactamente igual, excepto por los campos modificados en el formulario. Con el hook enviara la solicitud correspondiente.
+Este ha sido hasta ahora el componente mas problematico pero creo que he logrado que haga todo lo uqe quiero y como lo quiero.
 
 
 
 
-## Siguiente dia: Trabajar en la responsividad de Header.tsx
+
+
+## Siguiente dia: Trabajar en Header.tsx, sus links deben ser dinamicos (login debe verse solo cuando no hay un usuario loguead, de lo contrario debe verse Edit), mostrar un saludo al usuario logueado y trabajar en la responsividad. Tambien en Footer.tsx para que se muestre el link a mi porfolio

@@ -38,6 +38,7 @@ const Register = () => {
 
   const { submit, queryStatus } = useFormSubmit<RegisterData>({
     endpoint: '/api/register-user',
+    method: "POST",
     encrypt: false,
     userKey: 'clave123',
     onSuccess: () => console.log('✅ Usuario registrado'),
@@ -54,20 +55,23 @@ const Register = () => {
   })
 
   return (
-    <Container maxWidth="sm" sx={{ py: 6 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
+    <Container maxWidth="sm" sx={{ py: 2 }}>
+      <Paper elevation={3} sx={{ p: 1 }}>
         <Typography variant="h4" gutterBottom>
           Registro de nuevo usuario
         </Typography>
 
         <Box component="form" onSubmit={onSubmit} noValidate>
-          <TextField
+          {!(isSuccess || isError) ? 
+            <>
+            <TextField
             label="Nombre"
             fullWidth
             margin="normal"
             {...register('name')}
             error={!!errors.name}
             helperText={errors.name?.message}
+            disabled={isLoading}
           />
 
           <TextField
@@ -77,6 +81,7 @@ const Register = () => {
             {...register('emailPrincipal')}
             error={!!errors.emailPrincipal}
             helperText={errors.emailPrincipal?.message}
+            disabled={isLoading}
           />
 
           <TextField
@@ -87,6 +92,7 @@ const Register = () => {
             {...register('password')}
             error={!!errors.password}
             helperText={errors.password?.message}
+            disabled={isLoading}
           />
 
           <TextField
@@ -96,6 +102,7 @@ const Register = () => {
             {...register('secretWord')}
             error={!!errors.secretWord}
             helperText={errors.secretWord?.message}
+            disabled={isLoading}
           />
 
           <Button
@@ -110,6 +117,9 @@ const Register = () => {
             {isLoading ? 'Registrando...' : 'Registrar usuario'}
           </Button>
 
+            </>
+            : ""
+          }
           {isSuccess && (
             <Alert severity="success" sx={{ mt: 2 }}>
               Usuario registrado correctamente.

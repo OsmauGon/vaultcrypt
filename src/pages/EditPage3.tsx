@@ -36,7 +36,7 @@ const EditUser3 = () => {
     emailPrincipal: 'juan@example.com',
     password: '',
     secretWord: '',
-    emailList: ['juan.alt@example.com'],
+    emailList: [''],
   }
 
   const initialRef = useRef<EditData>(initialUserData)
@@ -142,10 +142,10 @@ const EditUser3 = () => {
       return value !== original
     })
     .map(([key]) => key)
-
+    console.log(modifiedKeys)
   return (
-    <Container maxWidth="sm" sx={{ py: 6 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
+    <Container maxWidth="sm" sx={{ py: 2 }}>
+      <Paper elevation={3} sx={{ p: 1 }}>
         <Typography variant="h4" gutterBottom>
           Editar datos del usuario
         </Typography>

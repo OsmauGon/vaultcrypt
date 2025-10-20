@@ -14,6 +14,8 @@ import type { LoginData } from '../schemas/loginSchema'
 import { loginSchema } from '../schemas/loginSchema'
 import { useFormSubmit } from '../hooks/formSubmit'
 
+
+
 const Login = () => {
   const {
     register,
@@ -25,6 +27,7 @@ const Login = () => {
 
   const { submit, queryStatus } = useFormSubmit({
     endpoint: '/api/login', // opcional por ahora
+    method: "GET",
     onSuccess: () => {
       console.log('✅ Login exitoso')
     },
@@ -36,7 +39,7 @@ const Login = () => {
   const isLoading = queryStatus === 'loading'
   const isError = queryStatus === 'error'
   const isSuccess = queryStatus === 'success'
-
+  console.log(queryStatus)
   return (
     <Container maxWidth="sm" sx={{ py: 6 }}>
       <Paper elevation={3} sx={{ p: 4 }}>
@@ -45,6 +48,8 @@ const Login = () => {
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit(submit)} noValidate>
+          {!(isSuccess || isError) ? 
+          <>
           <TextField
             label="Email"
             fullWidth
@@ -52,6 +57,7 @@ const Login = () => {
             {...register('email')}
             error={!!errors.email}
             helperText={errors.email?.message}
+            disabled={isLoading}
           />
 
           <TextField
@@ -62,6 +68,7 @@ const Login = () => {
             {...register('password')}
             error={!!errors.password}
             helperText={errors.password?.message}
+            disabled={isLoading}
           />
 
           <Button
@@ -75,6 +82,9 @@ const Login = () => {
           >
             {isLoading ? 'Ingresando...' : 'Ingresar'}
           </Button>
+          </>
+          : ""
+          }
 
           {isSuccess && (
             <Alert severity="success" sx={{ mt: 2 }}>
