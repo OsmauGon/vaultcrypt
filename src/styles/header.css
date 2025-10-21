@@ -1,0 +1,34 @@
+.vc-header div a{
+    
+    font-weight: bold;
+}
+
+
+@media (max-width: 531px) {
+  .vc-header div a{
+    font-size: 10px;
+    }
+  .vc-header div div{
+    font-size: 12px;
+    }
+}
+@media (max-width: 526px) {
+  .vc-header div a{
+    font-size: 10px;
+    }
+  .vc-header div div{
+    font-size: 12px;
+    }
+}
+@media (max-width: 446px) {
+    
+  .vc-header div a{
+    font-weight: bold;
+    }
+    .vc-header div{
+        padding: 0
+    }
+  .saludo{
+    display: none;
+  }
+}

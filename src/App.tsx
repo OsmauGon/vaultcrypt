@@ -12,8 +12,9 @@ import { UsuarioProvider } from './contextos/UsuarioProvider'
 
 function App() {
   return (
+    
+    <UsuarioProvider>
     <AppLayout>
-      <UsuarioProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<Home />} />
@@ -24,8 +25,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/edit" element={<EditPage4 />} />
       </Routes>
-      </UsuarioProvider>
     </AppLayout>
+    </UsuarioProvider>
   )
 }
 
