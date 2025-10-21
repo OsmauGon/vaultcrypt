@@ -8,10 +8,12 @@ import Login from './pages/Login'
 //import EditUser3 from './pages/EditPage3'
 import EditPage4 from './pages/EditPage4'
 import Register from './pages/Register'
+import { UsuarioProvider } from './contextos/UsuarioProvider'
 
 function App() {
   return (
     <AppLayout>
+      <UsuarioProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<Home />} />
@@ -22,6 +24,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/edit" element={<EditPage4 />} />
       </Routes>
+      </UsuarioProvider>
     </AppLayout>
   )
 }

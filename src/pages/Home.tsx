@@ -2,6 +2,7 @@ import {Typography, Container, Paper, Stack, Button } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 
 import '../styles/homePage.css'
+import { useUsuario } from '../hooks/useUsuario';
 
 
 /* 
@@ -109,6 +110,8 @@ const Home = () => {
 */
 
 const Home = () => {
+    const { usuario } = useUsuario();
+    console.log(usuario)
   return (
     <Container maxWidth="md" sx={{ py: 1 }}>
       <Paper className='contenido-home-fullscream' elevation={3} sx={{ p: 4, bgcolor: 'background.paper' }}>
@@ -205,6 +208,7 @@ const Home = () => {
 
 
       </Paper>
+      <div>Usuario actual: {usuario?.nombre}</div>
     </Container>
   )
 } 

@@ -38,7 +38,7 @@ Este ha sido hasta ahora el componente mas problematico pero creo que he logrado
 
 
 
-
+Hoy establecimos el contexto global del usuario logueado. Se creo la carpeta CONTEXTOS y dentro los archivos UsaurioContext y UsuarioProvider. En el primero declaramos y creamos el contexto y en el segundo lo aplicamos a los children. Se desarrollo de manera que al iniciar la pagina VaultCrypt se haga una solicitud fetch mandando un token en el localStorage para iniciar la sesion autaticamente. En caso de que de no haya un token guardado en el localStorage se logueara a un usuario por defecto. Por ultimo se creo en la carpeta HOOKS el hook useUsuario.ts para poder llamarlo y desestructurarlo desde cualquier lugar
 
 
 ## Siguiente dia: Trabajar en Header.tsx, sus links deben ser dinamicos (login debe verse solo cuando no hay un usuario loguead, de lo contrario debe verse Edit), mostrar un saludo al usuario logueado y trabajar en la responsividad. Tambien en Footer.tsx para que se muestre el link a mi porfolio
