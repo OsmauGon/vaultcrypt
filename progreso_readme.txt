@@ -42,3 +42,10 @@ Hoy establecimos el contexto global del usuario logueado. Se creo la carpeta CON
 
 
 ## Dia 6:Lo que hice fue Trabajar en Header.tsx, sus links deben ser dinamicos (login debe verse solo cuando no hay un usuario loguead, de lo contrario debe verse Edit), mostrar un saludo al usuario logueado y trabajar en la responsividad. Tambien en Footer.tsx para que se muestre el link a mi porfolio
+
+##
+
+Falta:
+EncryptPage
+HistorialPage
+SearchPage

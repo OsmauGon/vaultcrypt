@@ -1,0 +1,19 @@
+.select{
+    color: red
+    
+}
+.select label{
+    color: blue;
+}
+#account-form-button{
+    margin-top: 5px;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5*/
+@media screen and (max-width: 423px) {
+  /* … */
+    .account-form label, .account-form div{
+    font-size: 11px;
+}
+  
+   
+}
