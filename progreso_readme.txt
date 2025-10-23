@@ -43,9 +43,7 @@ Hoy establecimos el contexto global del usuario logueado. Se creo la carpeta CON
 
 ## Dia 6:Lo que hice fue Trabajar en Header.tsx, sus links deben ser dinamicos (login debe verse solo cuando no hay un usuario loguead, de lo contrario debe verse Edit), mostrar un saludo al usuario logueado y trabajar en la responsividad. Tambien en Footer.tsx para que se muestre el link a mi porfolio
 
-##
+## Dia 7:  Tome todo lo relacionado con EncryptPage de VaultCrypt1 y lo pegue en VaultCrypt2 (EncryptPage, NewAccountForm y account-form.css) y ya esta adaptado y funcionando.
+Ahora vamos a trabajar en HistorialPage y SearchPage. Antes usabamos un contexto global para tener la lista de cuentas creadas por el usuario pero he decidido cambiar eso por  un useState y un useEffect que haga la solicitud fetch cada vex que se cargue el componente. Para empezar voy a obtener la simulada de el archivo arch.txt que guardare en la carpeta PUBLIC
 
-Falta:
-EncryptPage
-HistorialPage
-SearchPage
+Tome el codigo de HistorialPage y SearchPage de VaultCrypt1 y lo adapte al funcionamiento de VaultCrypt2 addemas de agregarle responsividad. Ambas ya estan funcionales
