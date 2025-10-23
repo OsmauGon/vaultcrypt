@@ -18,6 +18,7 @@ type RegisterData = {
   emailPrincipal: string
   password: string
   secretWord: string
+  role?: "admin" | 'user' | 'visit'
 }
 
 const Register = () => {
@@ -32,12 +33,12 @@ const Register = () => {
       name: '',
       emailPrincipal: '',
       password: '',
-      secretWord: '',
+      secretWord: ''
     },
   })
 
   const { submit, queryStatus } = useFormSubmit<RegisterData>({
-    endpoint: '/api/register-user',
+    endpoint: '/api/register',
     method: "POST",
     encrypt: false,
     userKey: 'clave123',
@@ -97,6 +98,7 @@ const Register = () => {
 
           <TextField
             label="Palabra secreta"
+            type='password'
             fullWidth
             margin="normal"
             {...register('secretWord')}

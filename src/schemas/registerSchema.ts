@@ -5,6 +5,9 @@ export const registerSchema = z.object({
   emailPrincipal: z.string().email({ message: 'Email inválido' }),
   password: z.string().min(6, { message: 'La contraseña debe tener al menos 6 caracteres' }),
   secretWord: z.string().min(4, { message: 'La palabra secreta debe tener al menos 4 caracteres' }),
+  role: z.enum(['admin', 'user', 'visit']).default('visit')// cambiar por user
+
+
 })
 
 export type RegisterData = z.infer<typeof registerSchema>

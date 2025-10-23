@@ -16,7 +16,7 @@ export const EditForm = ({ initialCredentials } :EditFormProps) => {
   const [formState, setFormState] = useState<UserCredentials>(initialCredentials);
 
   const { submit, queryStatus } = useFormSubmit<UserCredentials>({
-      endpoint: '/api/edit-user',
+      endpoint: '/api/edit',
       method: 'PATCH',//creo que es este
       encrypt: false,
       userKey: 'clave123',

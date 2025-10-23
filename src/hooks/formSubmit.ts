@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { encryptField } from '../utils/encription'
 
+import {simularLogin} from '../../public/loginProtocol'
+
 type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
 
 interface UseFormSubmitOptions {
@@ -58,6 +60,7 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
 
       setQueryStatus('success')
       onSuccess?.()
+      simularLogin(formData)
     } catch (err) {
       console.error('❌ Error en el envío:', err)
       setQueryStatus('error')

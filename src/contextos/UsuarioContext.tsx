@@ -7,7 +7,7 @@ export interface UsuarioLogueado {
   emailPrincipal: string;
   emailList: string[];
   contraseña: string;
-  rol: 'user' | 'admin';
+  rol: 'user' | 'admin' | 'visit';
   palabraSecreta: string;
 }
 

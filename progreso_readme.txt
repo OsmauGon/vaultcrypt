@@ -47,3 +47,15 @@ Hoy establecimos el contexto global del usuario logueado. Se creo la carpeta CON
 Ahora vamos a trabajar en HistorialPage y SearchPage. Antes usabamos un contexto global para tener la lista de cuentas creadas por el usuario pero he decidido cambiar eso por  un useState y un useEffect que haga la solicitud fetch cada vex que se cargue el componente. Para empezar voy a obtener la simulada de el archivo arch.txt que guardare en la carpeta PUBLIC
 
 Tome el codigo de HistorialPage y SearchPage de VaultCrypt1 y lo adapte al funcionamiento de VaultCrypt2 addemas de agregarle responsividad. Ambas ya estan funcionales
+
+## Dia 8: Adaptamos el esquema de zod para Register.tsx para hacer que al crear un usuario nuevo se lo cree con el rol de visit o visitante para hacer pruebas. En UsuarioProvider modificamos el primer useEffect para revice el localStorage. Si hay un item "vaultcrypt-token" lo tomara para iniciar la sesion, si no iniciara sesion de un usuario por defecto (Juan). Si no hay un item 'vaultcrypt-token' pero si un item 'vc-visit' se logueara al usuario almacenado en ese token .
+Se creo en archivo loginProtocol.ts para declarar una funcion que tome el formData enviado en el hook formSubmit y lo adapte como un usuario recibido del backend y lo guarde en el localStorage con el item 'vc-visit'. La idea es que al hacer login, register o edit se use la fucnion de loginProtocol para simular correctamente el funcionamiento de dichos componentes
+Lo que sigue hacer es adaptaro todo a un solo idioma poruqe el zod esta hecho con las propidades en ingles y otros estan hechos con las propiedades en castellano. Habra que reemplazar nombre por name, contraseña por password, etc.
+
+Falta hacer:
+Poner un boton de logout en el header
+Mejorar la estetica que encuadra a las page
+registerSchema cambiar "visit" por "user" Cuando el backend este listo
+eleminar usuario por defecto Juan el UsuarioProvider
+ajustar los endopoins para comunicarse con el backend
+disñar protocolos de funcinamiento para la simulacion de un backend (al registrar un usario se guarde en el localStorage, se muestre la nueva cuenta luego de ser enviada)
