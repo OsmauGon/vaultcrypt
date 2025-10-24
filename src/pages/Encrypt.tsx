@@ -11,7 +11,7 @@ export const Encrypt = () => {
   const {queryStatus} = useFormSubmit({
     encrypt: true,
     method: 'PUT',
-    userKey: usuario?.palabraSecreta ? usuario?.palabraSecreta : 'claveMaestraDelUsuario',
+    userKey: usuario?.secretWord ? usuario?.secretWord : 'claveMaestraDelUsuario',
     endpoint: '/api/accounts'
 
   })

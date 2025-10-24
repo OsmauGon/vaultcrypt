@@ -1,38 +1,39 @@
 import { useEffect, useState } from 'react'
 import { EditForm } from '../components/EditForm'
+import { useUsuario } from '../hooks/useUsuario';
 
 
  export type UserCredentials = {
-  nombre: string;
+  name: string;
   emailPrincipal: string;
-  contraseña: string;
-  palabraSecreta: string;
-  rol?: 'user' | 'admin';
+  password: string;
+  secretWord: string;
+  role?: 'user' | 'admin' | 'visit';
   emailList: string[];
 };
 
 const EditPage4 = () => {
   const [initialCredentials, setInitialCredentials] = useState<UserCredentials | null>(null);
-  
+  const {usuario} = useUsuario()
 
   useEffect(() => {
-    const user: UserCredentials = {
-  nombre: 'Juan',
-  emailPrincipal: 'Juan1@yahoo.com',
-  contraseña: '123456',
-  palabraSecreta: 'secreto',
-  rol: 'admin',
-  emailList: ['Juan1@yahoo.com', 'Juan2@yahoo.com', 'Juan3@yahoo.com'],
-  };
-    if (user) {
+    /*const user: UserCredentials = {
+    name: 'Juan',
+    emailPrincipal: 'Juan1@yahoo.com',
+    password: '123456',
+    secretWord: 'secreto',
+    role: 'admin',
+    emailList: ['Juan1@yahoo.com', 'Juan2@yahoo.com', 'Juan3@yahoo.com'],
+    };*/
+    if (usuario) {
       // Simulamos fetch de credenciales
       setInitialCredentials({
-        nombre: user.nombre,
-        emailPrincipal: user.emailPrincipal,
-        contraseña: user.contraseña, // Nunca se muestra la contraseña actual
-        palabraSecreta: user.palabraSecreta,
-        rol: user.rol,
-        emailList: user.emailList,
+        name: usuario.name,
+        emailPrincipal: usuario.emailPrincipal,
+        password: usuario.password, // Nunca se muestra la contraseña actual
+        secretWord: usuario.secretWord,
+        role: usuario.role,
+        emailList: usuario.emailList,
       });
     }
   }, []);

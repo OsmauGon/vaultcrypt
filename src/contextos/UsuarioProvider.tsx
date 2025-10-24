@@ -4,11 +4,11 @@ import { UsuarioContext } from './UsuarioContext';
 import type {UsuarioLogueado} from './UsuarioContext'
 
 const defaultUser: UsuarioLogueado = {
-  nombre: 'Juan',
+  name: 'Juan',
   emailPrincipal: 'Juan1@yahoo.com',
-  contraseña: '123456',
-  palabraSecreta: 'secreto',
-  rol: 'admin',
+  password: '123456',
+  secretWord: 'secreto',
+  role: 'admin',
   emailList: ['Juan1@yahoo.com', 'Juan2@yahoo.com', 'Juan3@yahoo.com'],
   };
 
@@ -64,9 +64,8 @@ useEffect(() => {
     setUsuario(defaultUser); // 👈 Si no hay token, también usamos defaultUser
   }
 
-  const visitUser = localStorage.getItem('vc-visit')
+  const visitUser = sessionStorage.getItem('vc-visit')
   if(visitUser && !storedToken){
-    console.log('hay visita')
     setUsuario(JSON.parse(visitUser))
   }
 }, []);

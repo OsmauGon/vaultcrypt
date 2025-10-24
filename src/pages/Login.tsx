@@ -39,6 +39,7 @@ const Login = () => {
   const isLoading = queryStatus === 'loading'
   const isError = queryStatus === 'error'
   const isSuccess = queryStatus === 'success'
+  const isNotFound = queryStatus === 'notfound'
   console.log(queryStatus)
   return (
     <Container maxWidth="sm" sx={{ py: 6 }}>
@@ -54,9 +55,9 @@ const Login = () => {
             label="Email"
             fullWidth
             margin="normal"
-            {...register('email')}
-            error={!!errors.email}
-            helperText={errors.email?.message}
+            {...register('emailPrincipal')}
+            error={!!errors.emailPrincipal}
+            helperText={errors.emailPrincipal?.message}
             disabled={isLoading}
           />
 
@@ -97,6 +98,11 @@ const Login = () => {
           {isError && (
             <Alert severity="error" sx={{ mt: 2 }}>
               Hubo un error al iniciar sesión. Intentá nuevamente.
+            </Alert>
+          )}
+          {isNotFound && (
+            <Alert severity="error" sx={{ mt: 2 }}>
+              Usuario no encontrado.
             </Alert>
           )}
         </Box>

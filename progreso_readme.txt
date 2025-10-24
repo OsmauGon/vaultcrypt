@@ -52,6 +52,12 @@ Tome el codigo de HistorialPage y SearchPage de VaultCrypt1 y lo adapte al funci
 Se creo en archivo loginProtocol.ts para declarar una funcion que tome el formData enviado en el hook formSubmit y lo adapte como un usuario recibido del backend y lo guarde en el localStorage con el item 'vc-visit'. La idea es que al hacer login, register o edit se use la fucnion de loginProtocol para simular correctamente el funcionamiento de dichos componentes
 Lo que sigue hacer es adaptaro todo a un solo idioma poruqe el zod esta hecho con las propidades en ingles y otros estan hechos con las propiedades en castellano. Habra que reemplazar nombre por name, contraseña por password, etc.
 
+Hicimos intentos de disñar protocolos de funcinamiento para la simulacion de un backend (al registrar un usario se guarde en el localStorage, se muestre la nueva cuenta luego de ser enviada) y se han encontrado errores en el funcionamiento del todo el sistema los cuales se veran el dia siguiente
+
+Siguietne dia: EditPage puede enviar correos electronicos vacios y no se puede cambiar el nombre de usuario ni el email principal ni la contraseña ni la palabra secreta
+El seteo de sesionStorage y localStorage de el archivo loginProtocol funcionan bien pero falta lograr que a hacerse el seteo seactualice el estado global de Usuario
+
+
 Falta hacer:
 Poner un boton de logout en el header
 Mejorar la estetica que encuadra a las page

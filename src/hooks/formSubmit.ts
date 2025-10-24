@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { encryptField } from '../utils/encription'
+import {ejecutarSimulacro} from '../../public/loginProtocol'
 
-import {simularLogin} from '../../public/loginProtocol'
 
-type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
+type SubmitStatus = 'idle' | 'loading' | 'success' | 'error' | 'notfound'
 
 interface UseFormSubmitOptions {
   encrypt?: boolean
@@ -57,13 +57,17 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify(payload),
       // })
-
+      if(sessionStorage.getItem("vc-visit") || localStorage.getItem('vc-visit')) {//borrar cuando este terminado el backend
+        const algo = endpoint?.split('/')[2] ? endpoint?.split('/')[2] : ""
+        ejecutarSimulacro(algo, formData)
+        throw new Error
+      } 
       setQueryStatus('success')
       onSuccess?.()
-      simularLogin(formData)
     } catch (err) {
       console.error('❌ Error en el envío:', err)
       setQueryStatus('error')
+      if(!sessionStorage.getItem("algo")) setQueryStatus('notfound')//borrar cuando este terminado el backend
       onError?.()
     } finally {
       setTimeout(() => setQueryStatus('idle'), 8000)

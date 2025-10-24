@@ -9,7 +9,6 @@ import { useUsuario } from '../hooks/useUsuario';
 
 const Home = () => {
     const { usuario, token, logout } = useUsuario();
-    console.log(usuario)
   return (
     <Container maxWidth="md" sx={{ py: 1 }}>
       <Paper className='contenido-home-fullscream' elevation={3} sx={{ p: 4, bgcolor: 'background.paper' }}>
@@ -106,7 +105,7 @@ const Home = () => {
 
 
       </Paper>
-      <div>Usuario actual: {usuario?.nombre}</div>
+      <div>Usuario actual: {usuario?.name}</div>
     </Container>
   )
 } 

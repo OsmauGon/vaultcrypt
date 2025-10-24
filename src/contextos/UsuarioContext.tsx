@@ -3,12 +3,12 @@
 import { createContext } from 'react';
 
 export interface UsuarioLogueado {
-  nombre: string;
+  name: string;
   emailPrincipal: string;
   emailList: string[];
-  contraseña: string;
-  rol: 'user' | 'admin' | 'visit';
-  palabraSecreta: string;
+  password: string;
+  role: 'user' | 'admin' | 'visit';
+  secretWord: string;
 }
 
 export interface UsuarioContextType {

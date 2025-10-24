@@ -24,8 +24,8 @@ const Header = () => {
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        {(usuario && usuario.nombre) ? <Typography variant="h6" component="div" className='saludo'>
-                            Hola {usuario.nombre} 👋
+        {(usuario && usuario.name) ? <Typography variant="h6" component="div" className='saludo'>
+                            Hola {usuario.name} 👋
                           </Typography>
 
                         : <Typography variant="h6" component="div" className='saludo'>
@@ -44,7 +44,7 @@ const Header = () => {
             </Button>
           ))}
           
-            {(usuario && usuario.nombre) ? <Button
+            {(usuario && usuario.name) ? <Button
                             component={RouterLink}
                             to='/edit'
                             sx={{ color: theme.palette.background.default }}

@@ -28,7 +28,7 @@ export const FilterBar = ({
                     label='Tipo de cuenta'
                     onChange={(e)=> setSelectedType(e.target.value)}
                     >
-                    <MenuItem value=''>Todos</MenuItem>
+                    {/* <MenuItem value=''>Todos</MenuItem> */}
                     {accountTypes.map((type)=>(
                         <MenuItem key={type} value={type}>{type}</MenuItem>
                     ))}
@@ -43,7 +43,7 @@ export const FilterBar = ({
                                                 label='Email de registro'
                                                 onChange={(e)=> setSelectedEmail(e.target.value)}
                                                 >
-                                                <MenuItem value="">Todos</MenuItem>
+                                                {/* <MenuItem value="" >Todos</MenuItem> */}
                                                 {accountEmails.map((email) => (
                                                     <MenuItem key={email} value={email}>{email}</MenuItem>
                                                 ))}

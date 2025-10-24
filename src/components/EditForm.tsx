@@ -54,10 +54,10 @@ export const EditForm = ({ initialCredentials } :EditFormProps) => {
   }
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-const nModificado :boolean = formState.nombre == initialUser.nombre
+const nModificado :boolean = formState.name == initialUser.name
 const eModificado :boolean = formState.emailPrincipal == initialUser.emailPrincipal 
-const pModificado :boolean = formState.contraseña == initialUser.contraseña
-const wModificado :boolean = formState.palabraSecreta == initialUser.palabraSecreta
+const pModificado :boolean = formState.password == initialUser.password
+const wModificado :boolean = formState.secretWord == initialUser.secretWord
 const lModificado :boolean = formState.emailList == initialUser.emailList 
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -76,7 +76,7 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               label="Nombre"
               fullWidth
               margin="normal"
-              value={formState.nombre}
+              value={formState.name}
               onChange={e => handleChange('nombre', e.target.value)}
             />
             <TextField
@@ -91,7 +91,7 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               type="password"
               fullWidth
               margin="normal"
-              value={formState.contraseña}
+              value={formState.secretWord}
               onChange={e => handleChange('contraseña', e.target.value)}
             />
             <TextField
@@ -99,7 +99,7 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               type='password'
               fullWidth
               margin="normal"
-              value={formState.palabraSecreta}
+              value={formState.secretWord}
               onChange={e => handleChange('palabraSecreta', e.target.value)}
             />
 
@@ -110,6 +110,7 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               {formState.emailList.map((email, index) => (
                 <Box key={index} display="flex" alignItems="center">
                   <TextField
+                    required
                     label={`Email ${index + 1}`}
                     fullWidth
                     value={email}

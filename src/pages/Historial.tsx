@@ -53,7 +53,7 @@ export const Historial = () => {
   return (
          <> 
             {usuario ? <>
-                            <Typography variant="h4" gutterBottom>Historial de {usuario.nombre}</Typography>
+                            <Typography variant="h4" gutterBottom>Historial de {usuario.name}</Typography>
                             <Typography >Acceda a las ultimas cuentas creadas</Typography>
                             {
                               !(cuentas && cuentas.length > 1) ? <p>Cargando cuentas...</p>
