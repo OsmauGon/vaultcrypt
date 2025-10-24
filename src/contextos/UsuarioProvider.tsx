@@ -57,11 +57,14 @@ export const UsuarioProvider = ({ children }: { children: React.ReactNode }) => 
 
 
 useEffect(() => {
+  const visit = localStorage.getItem('vc-visit')
+  if(!visit) localStorage.setItem('vc-visit','standby')
   const storedToken = localStorage.getItem('vaultcrypt-token');
   if (storedToken) {
     setToken(storedToken); // Esto dispara el otro useEffect
   } else {
-    setUsuario(defaultUser); // 👈 Si no hay token, también usamos defaultUser
+    setUsuario(null)
+    //setUsuario(defaultUser); // 👈 Si no hay token, también usamos defaultUser
   }
 
   const visitUser = sessionStorage.getItem('vc-visit')

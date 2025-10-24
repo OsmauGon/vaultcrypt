@@ -50,6 +50,12 @@ export const EditForm = ({ initialCredentials } :EditFormProps) => {
   };
   const handleSubmit =(e :React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const noEmails = formState.emailList.filter(item => !regexEmail.test(item));
+    if(noEmails.length != 0) {
+      alert("Error, verifique el formato de los emails que esta enviando")
+      return
+    }
     submit(formState)
   }
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -77,7 +83,7 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               fullWidth
               margin="normal"
               value={formState.name}
-              onChange={e => handleChange('nombre', e.target.value)}
+              onChange={e => handleChange('name', e.target.value)}
             />
             <TextField
               label="Email principal"
@@ -91,8 +97,8 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               type="password"
               fullWidth
               margin="normal"
-              value={formState.secretWord}
-              onChange={e => handleChange('contraseña', e.target.value)}
+              value={formState.password}
+              onChange={e => handleChange('password', e.target.value)}
             />
             <TextField
               label="Palabra secreta"
@@ -100,7 +106,7 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               fullWidth
               margin="normal"
               value={formState.secretWord}
-              onChange={e => handleChange('palabraSecreta', e.target.value)}
+              onChange={e => handleChange('secretWord', e.target.value)}
             />
 
             <Typography variant="h6" sx={{ mt: 2 }}>
@@ -110,7 +116,6 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               {formState.emailList.map((email, index) => (
                 <Box key={index} display="flex" alignItems="center">
                   <TextField
-                    required
                     label={`Email ${index + 1}`}
                     fullWidth
                     value={email}

@@ -56,11 +56,12 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
       //   method: method,
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify(payload),
-      // })
-      if(sessionStorage.getItem("vc-visit") || localStorage.getItem('vc-visit')) {//borrar cuando este terminado el backend
+      // }))
+      if(localStorage.getItem('vc-visit')) {//borrar cuando este terminado el backend
         const algo = endpoint?.split('/')[2] ? endpoint?.split('/')[2] : ""
         ejecutarSimulacro(algo, formData)
-        throw new Error
+        window.location.href = '/'
+        //throw new Error
       } 
       setQueryStatus('success')
       onSuccess?.()

@@ -11,11 +11,13 @@ const registerSimulation =( nuevoUsuario :UserCredentials)=>{
     sessionStorage.setItem("vc-visit",JSON.stringify(usuarioAdaptado))
 
 }
-const loginSimulation =()=>{
+const loginSimulation =(data: UserCredentials)=>{
     
     const usuarioGuardado = localStorage.getItem('vc-visit')
     if(localStorage && sessionStorage && usuarioGuardado) {
+        if(data.emailPrincipal === JSON.parse(usuarioGuardado).emailPrincipal && data.password === JSON.parse(usuarioGuardado).password){
         sessionStorage.setItem('vc-visit', usuarioGuardado)
+        }
         
     }
 }
@@ -30,7 +32,7 @@ const editSimulation =(nuevoUsuario :UserCredentials)=>{
 export const ejecutarSimulacro = (tipo: string, data)=>{
     switch (tipo) {
         case 'login':
-            loginSimulation()
+            loginSimulation(data)
             break;
         case 'register':
             registerSimulation(data)

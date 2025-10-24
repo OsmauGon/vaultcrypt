@@ -36,7 +36,7 @@ const EditPage4 = () => {
         emailList: usuario.emailList,
       });
     }
-  }, []);
+  }, [usuario]);
 
   if (!initialCredentials) return <div>No hay usuario logueado</div>;
 
