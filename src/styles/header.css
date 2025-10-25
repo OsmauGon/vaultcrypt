@@ -1,11 +1,16 @@
-.vc-header div a{
+.vc-header .header-item{
     
     font-weight: bold;
 }
 
 
+@media (max-width: 612px) {
+  .header-item:nth-child(1){
+    display: none;
+  }
+}
 @media (max-width: 531px) {
-  .vc-header div a{
+  .vc-header .header-item{
     font-size: 10px;
     }
   .vc-header div div{
@@ -13,7 +18,7 @@
     }
 }
 @media (max-width: 526px) {
-  .vc-header div a{
+  .vc-header .header-item{
     font-size: 10px;
     }
   .vc-header div div{
@@ -22,7 +27,7 @@
 }
 @media (max-width: 446px) {
     
-  .vc-header div a{
+  .vc-header .header-item{
     font-weight: bold;
     }
     .vc-header div{

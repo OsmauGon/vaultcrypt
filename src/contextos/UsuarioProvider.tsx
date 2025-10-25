@@ -52,7 +52,7 @@ export const UsuarioProvider = ({ children }: { children: React.ReactNode }) => 
     setUsuario(null);
     setToken(null);
     localStorage.removeItem('vaultcrypt-token');
-    localStorage.removeItem('vc-user');
+    sessionStorage.removeItem('vc-visit');
   };
 
 

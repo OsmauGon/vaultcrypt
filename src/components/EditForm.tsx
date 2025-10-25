@@ -46,7 +46,8 @@ export const EditForm = ({ initialCredentials } :EditFormProps) => {
   };
 
   const handleAddEmail = () => {
-    setFormState(prev => ({ ...prev, emailList: [...prev.emailList, ''] }));
+    if(formState.emailList[formState.emailList.length - 1] === "") return
+    else setFormState(prev => ({ ...prev, emailList: [...prev.emailList, ''] }));
   };
   const handleSubmit =(e :React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()

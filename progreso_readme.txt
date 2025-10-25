@@ -54,9 +54,16 @@ Lo que sigue hacer es adaptaro todo a un solo idioma poruqe el zod esta hecho co
 
 Hicimos intentos de disñar protocolos de funcinamiento para la simulacion de un backend (al registrar un usario se guarde en el localStorage, se muestre la nueva cuenta luego de ser enviada) y se han encontrado errores en el funcionamiento del todo el sistema los cuales se veran el dia siguiente
 
-Siguietne dia: EditPage puede enviar correos electronicos vacios y no se puede cambiar el nombre de usuario ni el email principal ni la contraseña ni la palabra secreta
+## Dia 9: Del dia anterio se plantearon los siguiente problemas EditPage puede enviar correos electronicos vacios y no se puede cambiar el nombre de usuario ni el email principal ni la contraseña ni la palabra secreta
 El seteo de sesionStorage y localStorage de el archivo loginProtocol funcionan bien pero falta lograr que a hacerse el seteo seactualice el estado global de Usuario
+Se han resulto todos los errores de EditPage y falta agregar que la funcion que agrega un nuevo input a la lista de emailsSecundarios no agregue uno nuevo si el anterior esta vacio.
+Se resolvio el flujo del localStorage y sesionStorage con el detalle de que en el login al dar credenciales erroneas aunque falle el logueo del sesionStorage y localStorage dice "logueo exitoso"
 
+Logre hacer que si hay un input de email vacio no se pueda agregar unno mas y sumado a que no se puedan enviar emails vacios entonces me quedo trankilo que de que EditPage esta completo
+Perfeccione el logueo correcto y el incorrecto para una simulacion adecuada (si las credenciales enviadas solo en el login coinciden con las de localStorage se muestra el mensaje de usuario no encontrado)
+Agregue el boton de logout y su funcionamiento correspondiente ya esta operando a la Perfeccione
+
+## siguiente dia: armar un componente que simule la encriptacion de una nueva cuenta y seria ideal que historial no este visible hasta que el backend este disponible
 
 Falta hacer:
 Poner un boton de logout en el header

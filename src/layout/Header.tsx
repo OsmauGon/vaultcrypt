@@ -1,11 +1,13 @@
 import { AppBar, Toolbar, Typography, useTheme, Button, Box } from '@mui/material'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { useUsuario } from '../hooks/useUsuario';
 import '../styles/header.css'
 
+
 const Header = () => {
   const theme = useTheme()
-  const { usuario } = useUsuario();
+  const { usuario, logout } = useUsuario();
+  const navigate = useNavigate()
 
   const navItems = [
     { label: 'Inicio', path: '/' },
@@ -13,6 +15,12 @@ const Header = () => {
     { label: 'Historial', path: '/historial' },
     { label: 'Cifrar', path: '/encrypt' },
   ]
+
+  
+  const handleLogout =()=>{
+    logout()
+    navigate('/')
+  }
 
   return (
     <AppBar
@@ -35,6 +43,7 @@ const Header = () => {
         <Box>
           {navItems.map(({ label, path }) => (
             <Button
+              className='header-item'
               key={path}
               component={RouterLink}
               to={path}
@@ -44,15 +53,26 @@ const Header = () => {
             </Button>
           ))}
           
-            {(usuario && usuario.name) ? <Button
+            {(usuario && usuario.name) ? <>
+                          <Button
+                            className='header-item'
                             component={RouterLink}
                             to='/edit'
                             sx={{ color: theme.palette.background.default }}
                           >
                             Editar
                           </Button>
+                          <Button
+                            className='header-item'
+                            onClick={handleLogout}
+                            sx={{ color: theme.palette.background.default }}
+                          >
+                            Salir
+                          </Button>
+                          </>
 
                         : <Button
+                            className='header-item'
                             component={RouterLink}
                             to='/login'
                             sx={{ color: theme.palette.background.default }}

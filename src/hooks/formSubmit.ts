@@ -58,10 +58,15 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
       //   body: JSON.stringify(payload),
       // }))
       if(localStorage.getItem('vc-visit')) {//borrar cuando este terminado el backend
+        //Este condicional es para que se simule el registro y logueo de un usuario
+        //usanod el localStorage para simular el servidor y el sessionStorage para simular el token
+        //Cuando el backend funcione correctamente debe ser borrado
         const algo = endpoint?.split('/')[2] ? endpoint?.split('/')[2] : ""
-        ejecutarSimulacro(algo, formData)
+        ejecutarSimulacro(algo, JSON.stringify(formData))
+
+        if(algo === 'login' && !sessionStorage.getItem('vc-visit')) throw new Error
+        
         window.location.href = '/'
-        //throw new Error
       } 
       setQueryStatus('success')
       onSuccess?.()
