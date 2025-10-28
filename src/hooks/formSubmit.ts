@@ -42,10 +42,10 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
       )
     }
 
-    console.log('📦 Payload listo para enviar:', payload)
-    console.log('🛒 Lo vamos a enviar a ', endpoint)
-    console.log('🛒 Con el metodo ', method)
-    console.log('🧾 Datos originales:', formData)
+    console.log('📦 Payload listo para enviar:', payload)//Cambiar por "Nueva cuenta enviada"
+    console.log('🛒 Lo vamos a enviar a ', endpoint)//borrar
+    console.log('🛒 Con el metodo ', method)//borrar
+    console.log('🧾 Datos originales:', formData)//borrar
 
     try {
       setQueryStatus('loading')

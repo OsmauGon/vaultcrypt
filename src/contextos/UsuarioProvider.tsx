@@ -4,6 +4,7 @@ import { UsuarioContext } from './UsuarioContext';
 import type {UsuarioLogueado} from './UsuarioContext'
 
 const defaultUser: UsuarioLogueado = {
+  id: 123456789,
   name: 'Juan',
   emailPrincipal: 'Juan1@yahoo.com',
   password: '123456',
@@ -36,15 +37,16 @@ export const UsuarioProvider = ({ children }: { children: React.ReactNode }) => 
 
     // Validación extra por si el backend responde pero sin datos útiles
     if (!data || !data.emailPrincipal) {
-      console.warn('Datos inválidos, usando defaultUser');
-      setUsuario(defaultUser);
+      
+      const consulta = confirm('Datos inválidos, usar defaultUser?')
+      if(consulta) setUsuario(defaultUser);
       return;
     }
 
     setUsuario(data);
   } catch (error) {
     console.error('Error al refrescar usuario:', error);
-    setUsuario(defaultUser); // 👈 Fallback también en errores de red
+    //setUsuario(defaultUser); // 👈 Fallback también en errores de red
   }
 };
 

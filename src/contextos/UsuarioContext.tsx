@@ -3,6 +3,7 @@
 import { createContext } from 'react';
 
 export interface UsuarioLogueado {
+  id: number;
   name: string;
   emailPrincipal: string;
   emailList: string[];

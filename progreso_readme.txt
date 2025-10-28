@@ -65,8 +65,12 @@ Agregue el boton de logout y su funcionamiento correspondiente ya esta operando 
 
 
 ## Dia 10: Quise hacer el componente que muestre la cuenta encriptada al usuario logueado, pero encontre que al hacer submit en EncryptPage el formulario queda presente en lugar de mostrar si hubo exito o no. Lo que sucede es que no los componentes no llegan a actualizarce segun cambia el queryStatus al igual que sucedia en VaultCrypt1 y tube que rendirme. Para resolver esto reconstrui a EditPage de manera que ya no muestre el formalario o los mensajes de resolucion, sino que directamente muestre al componente NewAccountForm o al componente RequireAuthNotice. Luego modifique a NewAccountForm en manera que al igual que LoginPage o RegisterPage si muestre el formulario o los mensajes de resolucion. Ahora el funcionamiemto entrero de EncryptPage es adecuado y optimo a lo que tenia en mente
-## siguiente dia: armar un componente que muestre la encriptacion de una nueva cuentadi diciendo "asi se guardara su cuenta" y dejando claro que el backend aun no esta disponible. Seria ideal que historial no este visible hasta que el backend este disponible
+Intente armar el componente que muestre la encriptacion de una nueva cuenta, pero logicamente el payload (el objeto de cuenta con los valores encripados) esta en el hook useFormSubmit y esa informacion no se la pasa a ningun componente. Tendria que crear algun estado global para mantener la info y pasarsela al componente nuevo, pero considero mas simple mantener el console.log() del payload y en el video de explicacion mostrar como se ve la cuenta encriptada. Lo mejor es cortar por lo sano
+Tambien hice que que historial no este visible hasta que el backend este disponible mientras no haya un usuario logueado
+Hice modificaciones para uqe consulte mediante un confirm() se usar o no al usuario por defecto
 
+
+## lo que sigue es trabajar en la responividad de EncryptPage. Mejorar la seguridad de SearchPage e HistorialPage
 Falta hacer: 
 Mejorar la estetica que encuadra a las page
 registerSchema cambiar "visit" por "user" Cuando el backend este listo

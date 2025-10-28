@@ -5,6 +5,7 @@ import type { UserCredentials } from "../src/pages/EditPage4"
 const registerSimulation =( nuevoUsuario :UserCredentials)=>{
     const usuarioAdaptado = {
         ...nuevoUsuario,
+        id: 1,
         emailList: [nuevoUsuario.emailPrincipal]
     }
     localStorage.setItem("vc-visit",JSON.stringify(usuarioAdaptado))

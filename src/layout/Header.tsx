@@ -12,7 +12,6 @@ const Header = () => {
   const navItems = [
     { label: 'Inicio', path: '/' },
     { label: 'Buscar', path: '/search' },
-    { label: 'Historial', path: '/historial' },
     { label: 'Cifrar', path: '/encrypt' },
   ]
 
@@ -54,6 +53,14 @@ const Header = () => {
           ))}
           
             {(usuario && usuario.name) ? <>
+                          <Button
+                            className='header-item'
+                            component={RouterLink}
+                            to='/historial'
+                            sx={{ color: theme.palette.background.default }}
+                          >
+                            Historial
+                          </Button>
                           <Button
                             className='header-item'
                             component={RouterLink}

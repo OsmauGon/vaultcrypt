@@ -165,7 +165,7 @@ const handleSubmit2 = async (e: React.FormEvent) => {
             </Button>
       </form>}
       {isLoading ?  <Typography>Enviando…</Typography> :""}
-      {isSuccess ?  <Alert severity="success" sx={{ mt: 2 }}>✅ Enviado correctamente</Alert> :""}
+      {isSuccess ?  <Alert severity="success" sx={{ mt: 2 }}>✅ Enviado correctamente, verifique en consola</Alert> :""}
       {isError ?  <Alert severity="error" sx={{ mt: 2 }}>❌ Error al enviar</Alert> :""}
     </Paper>
   );
