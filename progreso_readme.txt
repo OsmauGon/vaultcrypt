@@ -63,12 +63,12 @@ Logre hacer que si hay un input de email vacio no se pueda agregar unno mas y su
 Perfeccione el logueo correcto y el incorrecto para una simulacion adecuada (si las credenciales enviadas solo en el login coinciden con las de localStorage se muestra el mensaje de usuario no encontrado)
 Agregue el boton de logout y su funcionamiento correspondiente ya esta operando a la Perfeccione
 
-## siguiente dia: armar un componente que simule la encriptacion de una nueva cuenta y seria ideal que historial no este visible hasta que el backend este disponible
 
-Falta hacer:
-Poner un boton de logout en el header
+## Dia 10: Quise hacer el componente que muestre la cuenta encriptada al usuario logueado, pero encontre que al hacer submit en EncryptPage el formulario queda presente en lugar de mostrar si hubo exito o no. Lo que sucede es que no los componentes no llegan a actualizarce segun cambia el queryStatus al igual que sucedia en VaultCrypt1 y tube que rendirme. Para resolver esto reconstrui a EditPage de manera que ya no muestre el formalario o los mensajes de resolucion, sino que directamente muestre al componente NewAccountForm o al componente RequireAuthNotice. Luego modifique a NewAccountForm en manera que al igual que LoginPage o RegisterPage si muestre el formulario o los mensajes de resolucion. Ahora el funcionamiemto entrero de EncryptPage es adecuado y optimo a lo que tenia en mente
+## siguiente dia: armar un componente que muestre la encriptacion de una nueva cuentadi diciendo "asi se guardara su cuenta" y dejando claro que el backend aun no esta disponible. Seria ideal que historial no este visible hasta que el backend este disponible
+
+Falta hacer: 
 Mejorar la estetica que encuadra a las page
 registerSchema cambiar "visit" por "user" Cuando el backend este listo
 eleminar usuario por defecto Juan el UsuarioProvider
 ajustar los endopoins para comunicarse con el backend
-disñar protocolos de funcinamiento para la simulacion de un backend (al registrar un usario se guarde en el localStorage, se muestre la nueva cuenta luego de ser enviada)
