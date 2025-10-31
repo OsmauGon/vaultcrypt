@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import EditPage4 from './pages/EditPage4'
 import Register from './pages/Register'
 import { UsuarioProvider } from './contextos/UsuarioProvider'
+import {DemoPage} from './pages/DemoPage'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/edit" element={<EditPage4 />} />
+        <Route path="/demo" element={<DemoPage />} />
       </Routes>
     </MainLayout>
     </UsuarioProvider>

@@ -31,6 +31,17 @@ export const EnlacesPaginas = () => {
                 </Link>
             }
             
+            <Link to={'/demo'}>
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <SearchIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Demostracion" />
+                    </ListItemButton>
+                </ListItem>
+            </Link>
+            
 
 
             <Link to={'/search'}>
