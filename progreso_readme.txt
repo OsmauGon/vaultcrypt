@@ -69,10 +69,21 @@ Intente armar el componente que muestre la encriptacion de una nueva cuenta, per
 Tambien hice que que historial no este visible hasta que el backend este disponible mientras no haya un usuario logueado
 Hice modificaciones para uqe consulte mediante un confirm() se usar o no al usuario por defecto
 
+## Dia 11: Se comenzo con el proceso de mejorar la estetica de la pagina tomando MainLayout.tsx de VaultCrypt1 y adaptarlo para estar presente en VaultCrypt2. Como resultado el header esta al costado de la pagina aunque faltan mejorar estilos y el  Footer ya no esta presente. 
 
-## lo que sigue es trabajar en la responividad de EncryptPage. Mejorar la seguridad de SearchPage e HistorialPage
-Falta hacer: 
+## lo que sigue es...
+
+
+*Falta hacer: 
+Incluir contacto con el desarrollador
+Mejorar la seguridad de SearchPage e HistorialPage
+optimizar los enlaces del header
+trabajar en la responividad de EncryptPage
 Mejorar la estetica que encuadra a las page
-registerSchema cambiar "visit" por "user" Cuando el backend este listo
 eleminar usuario por defecto Juan el UsuarioProvider
-ajustar los endopoins para comunicarse con el backend
+
+*Cuando el backend este listo:
+registerSchema cambiar "visit" por "user" Cuando el backend este listo
+ajustar los endopoins para comunicarse con el backend en todas las paginas
+desconterar NewAccountForm de EncryptPage y comentar AlternativeEncryptPage junto con sus importaciones
+

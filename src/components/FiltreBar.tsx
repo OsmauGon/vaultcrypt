@@ -18,7 +18,6 @@ export const FilterBar = ({
   accountEmails,
 }: FilterBarProps) => {
 
-
     return (
         <Box display='flex' gap={2} flexWrap='wrap' mt={2}>
             <FormControl sx={{minWidth: 180}}>
@@ -36,7 +35,7 @@ export const FilterBar = ({
             </FormControl>
 
 
-            {accountEmails.length > 1 ? <FormControl sx={{minWidth: 180}}>
+            {accountEmails.length != 0 ? <FormControl sx={{minWidth: 180}}>
                                             <InputLabel>Email de registro</InputLabel>
                                             <Select
                                                 value={selectedEmail}

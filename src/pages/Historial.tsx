@@ -27,9 +27,7 @@ export const Historial = () => {
     const [cuentas,setCuentas] = useState<Cuenta[] | null>(null)
     useEffect(()=>{
       const leerArchivo = async ()=> {
-            if(usuario && usuario.id){
-                console.log(usuario.id)
-            } else return
+            if (!usuario) return //esta es una mediadi de seguridad pero hay que mejorarla. Es importante que no se hagan solicitudes a menos que el usuario correcto este logueado
             try {
                 // Espera la respuesta de la petición
                 const respuesta = await fetch('../../public/accounts.txt');
@@ -51,7 +49,7 @@ export const Historial = () => {
 
         // Llamar a la función
         leerArchivo();
-    },[])
+    },[usuario])
 
   return (
          <> 

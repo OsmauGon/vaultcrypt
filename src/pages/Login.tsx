@@ -40,7 +40,7 @@ const Login = () => {
   const isError = queryStatus === 'error'
   const isSuccess = queryStatus === 'success'
   const isNotFound = queryStatus === 'notfound'
-  console.log(queryStatus)
+  
   return (
     <Container maxWidth="sm" sx={{ py: 6 }}>
       <Paper elevation={3} sx={{ p: 4 }}>

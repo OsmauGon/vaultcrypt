@@ -17,9 +17,7 @@ export const Search = () => {
   const [cuentas,setCuentas] = useState<Cuenta[] | null>(null)
   useEffect(()=>{
         const leerArchivo = async ()=> {
-          if(usuario && usuario.id){
-                console.log(usuario.id)
-            } else return
+          if(!usuario) return
               try {
                   // Espera la respuesta de la petición
                   const respuesta = await fetch('../../public/accounts.txt');

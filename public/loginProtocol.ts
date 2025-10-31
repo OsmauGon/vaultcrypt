@@ -24,10 +24,14 @@ const loginSimulation =(data: UserCredentials)=>{
     }
 }
 const editSimulation =(nuevoUsuario :UserCredentials)=>{
+    const usuarioAdaptado = {
+        ...nuevoUsuario,
+        id: 1
+    }
     
     if(localStorage && sessionStorage) {
-    localStorage.setItem("vc-visit",JSON.stringify(nuevoUsuario))
-    sessionStorage.setItem("vc-visit",JSON.stringify(nuevoUsuario))
+    localStorage.setItem("vc-visit",JSON.stringify(usuarioAdaptado))
+    sessionStorage.setItem("vc-visit",JSON.stringify(usuarioAdaptado))
     }
 }
 

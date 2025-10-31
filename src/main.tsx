@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import App from './App2.tsx'
 
 import darkTheme from './themes/darkTheme.ts'
 import { CssBaseline, ThemeProvider } from '@mui/material'
