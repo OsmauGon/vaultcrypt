@@ -70,6 +70,10 @@ Tambien hice que que historial no este visible hasta que el backend este disponi
 Hice modificaciones para uqe consulte mediante un confirm() se usar o no al usuario por defecto
 
 ## Dia 11: Se comenzo con el proceso de mejorar la estetica de la pagina tomando MainLayout.tsx de VaultCrypt1 y adaptarlo para estar presente en VaultCrypt2. Como resultado el header esta al costado de la pagina aunque faltan mejorar estilos y el  Footer ya no esta presente. 
+Cree la pagina DemoPage para que los usaurio tengan la experiencia de cifrado que ofrecera la pagina
+
+## Dia 12: Hicimos que En AlternativeEncryptPage mostrar la info del formulario y encriptada y "enviada" y ya que optima. Luego hicimos cambios en EnlacesPaginas.tsx para optimizar los enlaces del header y quedo optimo. Modificamos el boton de "probar ahora" de HomePage para que dirija al usario a EncryptPage o a DemoPage si no lo esta
+
 
 ## lo que sigue es...
 
@@ -77,9 +81,7 @@ Hice modificaciones para uqe consulte mediante un confirm() se usar o no al usua
 *Falta hacer: 
 Incluir contacto con el desarrollador
 Mejorar la seguridad de SearchPage e HistorialPage
-optimizar los enlaces del header
 trabajar en la responividad de EncryptPage
-Mejorar la estetica que encuadra a las page
 eleminar usuario por defecto Juan el UsuarioProvider
 
 *Cuando el backend este listo:
