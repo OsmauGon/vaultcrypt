@@ -74,9 +74,10 @@ Cree la pagina DemoPage para que los usaurio tengan la experiencia de cifrado qu
 
 ## Dia 12: Hicimos que En AlternativeEncryptPage mostrar la info del formulario y encriptada y "enviada" y ya que optima. Luego hicimos cambios en EnlacesPaginas.tsx para optimizar los enlaces del header y quedo optimo. Modificamos el boton de "probar ahora" de HomePage para que dirija al usario a EncryptPage o a DemoPage si no lo esta
 
+## Dia 13: Optimizamos la barra lateral para sea responsiva y estatica. Hicimos cambios en  los botones de HomePage para que el boton de "iniciar sesion" sea visible solo si no hay un usuario logueado
 
 ## lo que sigue es...
-
+En EditPage deberiamos borrar la opsion de editar la palabra secreta ya que esto implicaria se que desarrolle un protocolo para editar la encriptacion de todas las claves
 
 *Falta hacer: 
 Incluir contacto con el desarrollador

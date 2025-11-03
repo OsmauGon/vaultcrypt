@@ -2,6 +2,9 @@
 .contenido-home-smallscream{
     display: none;
 }
+.primer-detail{
+  margin-top: 10px;
+}
 
 
 @media (max-width: 940px) {

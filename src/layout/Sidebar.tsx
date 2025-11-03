@@ -8,7 +8,7 @@ export const Sidebar = ()=>{
     
     return (
        
-    <Drawer variant='permanent' sx={{width: 152, background: "red"}} open={true} id='draaawer'>
+    <Drawer variant='permanent'  open={true} className='sidebar' >
         <EnlacesPaginas></EnlacesPaginas>
     </Drawer>
     )

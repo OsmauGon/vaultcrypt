@@ -1,0 +1,46 @@
+ .sidebar{
+   height: 100vh;
+   
+} 
+.sidebar div{
+   position: relative;
+   height: 100%;
+   
+   
+}
+.sidebar ul a svg{
+    font-size: 2rem;
+}
+.sidebar ul a span{
+    font-size: 1rem;
+}
+
+
+
+
+@media (max-width: 645px) {
+    
+    .sidebar ul a svg{
+        font-size: 2.5rem;
+        background-color: #333;
+        border-radius: 50%;
+        padding: 5px;
+    }
+    .sidebar ul a span{
+        display: none;
+    }
+}
+@media (max-width: 420px) {
+    .sidebar{
+        width: 15%;
+    }
+    .sidebar ul a svg{
+        font-size: 1.5rem;
+        background-color: #333;
+        border-radius: 50%;
+        padding: 5px;
+    }
+    .sidebar ul a span{
+        display: none;
+    }
+}

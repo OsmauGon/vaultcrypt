@@ -68,7 +68,7 @@ const Home = () => {
           Esta aplicacion responsiva esta a su disposicon para la gestion de cuentas y credenciales de sus servicios cotidianos
         </Typography>
         <div>El backend aún está en desarrollo, pero podés explorar cómo VaultCrypt protege tu información desde el frontend.</div>
-        <details>
+        <details className='primer-detail'>
           <summary>¿Qué es esto?</summary>
           <p>VaultCrypt es una aplicación web que permite cifrar y descifrar información sensible de forma rápida, segura y accesible. Está diseñada con un enfoque en la experiencia de usuario, la escalabilidad del código y la claridad técnica.</p>
         </details>
@@ -85,14 +85,14 @@ const Home = () => {
           <p>Porque combina seguridad real con una interfaz intuitiva. Porque está construido con tecnologías modernas (React, MUI, Zod, RHF) y buenas prácticas de desarrollo. Y porque detrás hay una mente obsesionada con la coherencia, la mejora continua y la comunicación clara: vos.</p>
         </details>
         <Stack direction="row" spacing={2} sx={{ mt: 1,     justifyContent: 'center',alignItems: 'center' }}>
-          <Button
+          {!usuario &&  <Button
             variant='outlined'
             color="primary"
             component={RouterLink}
             to="/login"
           >
             Ingresar ahora
-          </Button>
+          </Button>}
           <Button
           
             variant='outlined'
