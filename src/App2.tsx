@@ -9,6 +9,7 @@ import EditPage4 from './pages/EditPage4'
 import Register from './pages/Register'
 import { UsuarioProvider } from './contextos/UsuarioProvider'
 import {DemoPage} from './pages/DemoPage'
+import ContactPage from './pages/ContactPage'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/edit" element={<EditPage4 />} />
         <Route path="/demo" element={<DemoPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </MainLayout>
     </UsuarioProvider>

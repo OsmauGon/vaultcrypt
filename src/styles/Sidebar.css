@@ -8,6 +8,11 @@
    
    
 }
+.sidebar ul a {
+  color: white;
+  text-decoration: none;
+}
+
 .sidebar ul a svg{
     font-size: 2rem;
 }

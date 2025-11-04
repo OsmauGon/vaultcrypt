@@ -75,18 +75,18 @@ Cree la pagina DemoPage para que los usaurio tengan la experiencia de cifrado qu
 ## Dia 12: Hicimos que En AlternativeEncryptPage mostrar la info del formulario y encriptada y "enviada" y ya que optima. Luego hicimos cambios en EnlacesPaginas.tsx para optimizar los enlaces del header y quedo optimo. Modificamos el boton de "probar ahora" de HomePage para que dirija al usario a EncryptPage o a DemoPage si no lo esta
 
 ## Dia 13: Optimizamos la barra lateral para sea responsiva y estatica. Hicimos cambios en  los botones de HomePage para que el boton de "iniciar sesion" sea visible solo si no hay un usuario logueado
-
+En EditPage eliminamos todo lo relacionado a la opsion de editar la palabra secreta ya que esto implicaria se que desarrolle un protocolo para editar la encriptacion de todas las claves
+En pos de Incluir contacto con el desarrollador creamos la pagina ContactPage para hablar unn poco del proyecto y permitir que se visiten mis redes.
+Arregle los link de sidebar para que no se vean azules y subrayados
 ## lo que sigue es...
-En EditPage deberiamos borrar la opsion de editar la palabra secreta ya que esto implicaria se que desarrolle un protocolo para editar la encriptacion de todas las claves
 
 *Falta hacer: 
-Incluir contacto con el desarrollador
-Mejorar la seguridad de SearchPage e HistorialPage
+Mejorar la seguridad de SearchPage e HistorialPage a la hora de hacer la solicitud que reciba las cuentas
 trabajar en la responividad de EncryptPage
 eleminar usuario por defecto Juan el UsuarioProvider
 
 *Cuando el backend este listo:
 registerSchema cambiar "visit" por "user" Cuando el backend este listo
 ajustar los endopoins para comunicarse con el backend en todas las paginas
-desconterar NewAccountForm de EncryptPage y comentar AlternativeEncryptPage junto con sus importaciones
+descomentar NewAccountForm de EncryptPage y comentar AlternativeEncryptPage junto con sus importaciones
 

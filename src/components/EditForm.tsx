@@ -64,7 +64,6 @@ export const EditForm = ({ initialCredentials } :EditFormProps) => {
 const nModificado :boolean = formState.name == initialUser.name
 const eModificado :boolean = formState.emailPrincipal == initialUser.emailPrincipal 
 const pModificado :boolean = formState.password == initialUser.password
-const wModificado :boolean = formState.secretWord == initialUser.secretWord
 const lModificado :boolean = formState.emailList == initialUser.emailList 
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -101,14 +100,6 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               value={formState.password}
               onChange={e => handleChange('password', e.target.value)}
             />
-            <TextField
-              label="Palabra secreta"
-              type='password'
-              fullWidth
-              margin="normal"
-              value={formState.secretWord}
-              onChange={e => handleChange('secretWord', e.target.value)}
-            />
 
             <Typography variant="h6" sx={{ mt: 2 }}>
               Emails secundarios
@@ -141,14 +132,13 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
             </Stack>
             
             {
-            (!nModificado || !eModificado || !pModificado || !wModificado || !lModificado) && (
+            (!nModificado || !eModificado || !pModificado  || !lModificado) && (
               <Alert severity="info" sx={{ mt: 2 }}>
                 Vas a modificar: 
                 <ul>
                   {nModificado ? "" : <li>Nombre de usuario</li>}
                   {eModificado ? "" : <li>Email de usuario</li>}
                   {pModificado ? "" : <li>Contraseña de usuario</li>}
-                  {wModificado ? "" : <li>Palabra secreta de usuario</li>}
                   {lModificado ? "" : <li>Emails Secundarios de usuario</li>}
                 </ul>
               </Alert>

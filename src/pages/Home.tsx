@@ -106,7 +106,7 @@ const Home = () => {
 
 
       </Paper>
-      {usuario && usuario.name && <div>Usuario actual: {usuario?.name}</div>}
+      
     </Container>
   )
 } 

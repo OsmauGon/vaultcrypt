@@ -7,7 +7,6 @@ import { useUsuario } from '../hooks/useUsuario';
   name: string;
   emailPrincipal: string;
   password: string;
-  secretWord: string;
   role?: 'user' | 'admin' | 'visit';
   emailList: string[];
 };
@@ -31,7 +30,6 @@ const EditPage4 = () => {
         name: usuario.name,
         emailPrincipal: usuario.emailPrincipal,
         password: usuario.password, // Nunca se muestra la contraseña actual
-        secretWord: usuario.secretWord,
         role: usuario.role,
         emailList: usuario.emailList,
       });

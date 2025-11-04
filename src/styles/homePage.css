@@ -5,6 +5,9 @@
 .primer-detail{
   margin-top: 10px;
 }
+.register-link a{
+  color: #90CAF9;
+}
 
 
 @media (max-width: 940px) {
