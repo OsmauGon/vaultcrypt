@@ -7,6 +7,7 @@ import { AccountCard } from '../components/AccountCard'
 import { FilterBar } from '../components/FiltreBar'
 import { useUsuario } from '../hooks/useUsuario'
 import type { Cuenta } from './Historial'
+import {accountSimulator} from '../../public/accountSimulator2'
 
 
 import '../styles/AccountCard.css'
@@ -31,7 +32,10 @@ export const Search = () => {
                   // Convierte el contenido a texto
                   const contenido = await respuesta.text();
   
-                  setCuentas(JSON.parse(contenido))
+                  /* setCuentas(JSON.parse(contenido)) */ //descomentar cuando el backend este listo
+                  
+                  const listaObtenida =  JSON.parse(contenido)// comentar cuando el backend este listo
+                  setCuentas(accountSimulator(usuario, listaObtenida))// comentar cuando el backend este listo
               } catch (error) {
                   console.error("Ocurrió un error al leer el archivo:", error);
               }

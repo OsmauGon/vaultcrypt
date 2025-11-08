@@ -56,7 +56,7 @@ Hicimos intentos de disñar protocolos de funcinamiento para la simulacion de un
 
 ## Dia 9: Del dia anterio se plantearon los siguiente problemas EditPage puede enviar correos electronicos vacios y no se puede cambiar el nombre de usuario ni el email principal ni la contraseña ni la palabra secreta
 El seteo de sesionStorage y localStorage de el archivo loginProtocol funcionan bien pero falta lograr que a hacerse el seteo seactualice el estado global de Usuario
-Se han resulto todos los errores de EditPage y falta agregar que la funcion que agrega un nuevo input a la lista de emailsSecundarios no agregue uno nuevo si el anterior esta vacio.
+Se han resulto todos los errores de EditPage y falta agregar que la funcion que agrega un nuevo input a la lista de emailsSecundarios no agregue uno nuevo si el anterior ahora vacio.
 Se resolvio el flujo del localStorage y sesionStorage con el detalle de que en el login al dar credenciales erroneas aunque falle el logueo del sesionStorage y localStorage dice "logueo exitoso"
 
 Logre hacer que si hay un input de email vacio no se pueda agregar unno mas y sumado a que no se puedan enviar emails vacios entonces me quedo trankilo que de que EditPage esta completo
@@ -69,7 +69,7 @@ Intente armar el componente que muestre la encriptacion de una nueva cuenta, per
 Tambien hice que que historial no este visible hasta que el backend este disponible mientras no haya un usuario logueado
 Hice modificaciones para uqe consulte mediante un confirm() se usar o no al usuario por defecto
 
-## Dia 11: Se comenzo con el proceso de mejorar la estetica de la pagina tomando MainLayout.tsx de VaultCrypt1 y adaptarlo para estar presente en VaultCrypt2. Como resultado el header esta al costado de la pagina aunque faltan mejorar estilos y el  Footer ya no esta presente. 
+## Dia 11: Se comenzo con el proceso de mejorar la estetica de la pagina tomando MainLayout.tsx de VaultCrypt1 y adaptarlo para estar presente en VaultCrypt2. Como resultado el header ahora al costado de la pagina aunque faltan mejorar estilos y el  Footer ya no esta presente. 
 Cree la pagina DemoPage para que los usaurio tengan la experiencia de cifrado que ofrecera la pagina
 
 ## Dia 12: Hicimos que En AlternativeEncryptPage mostrar la info del formulario y encriptada y "enviada" y ya que optima. Luego hicimos cambios en EnlacesPaginas.tsx para optimizar los enlaces del header y quedo optimo. Modificamos el boton de "probar ahora" de HomePage para que dirija al usario a EncryptPage o a DemoPage si no lo esta
@@ -78,15 +78,19 @@ Cree la pagina DemoPage para que los usaurio tengan la experiencia de cifrado qu
 En EditPage eliminamos todo lo relacionado a la opsion de editar la palabra secreta ya que esto implicaria se que desarrolle un protocolo para editar la encriptacion de todas las claves
 En pos de Incluir contacto con el desarrollador creamos la pagina ContactPage para hablar unn poco del proyecto y permitir que se visiten mis redes.
 Arregle los link de sidebar para que no se vean azules y subrayados
+
+## Dia 15: perfeccione una funcion que cree dentro de la carpeta PUBLIC llamado accountSimulator. Su funcion es la de tomar todas las cuentas que se obtienen del fetch en SearchPage e HistorialPage y cambiarles el email segun el usuario logueado y tambien la descripcion por una descripcion alternativa. De esta manera dejo muchos ejemplos de cuentas guardadas
 ## lo que sigue es...
 
 *Falta hacer: 
 Mejorar la seguridad de SearchPage e HistorialPage a la hora de hacer la solicitud que reciba las cuentas
 trabajar en la responividad de EncryptPage
 eleminar usuario por defecto Juan el UsuarioProvider
+crear un editAccount para modificar las cuentas individuales
 
 *Cuando el backend este listo:
 registerSchema cambiar "visit" por "user" Cuando el backend este listo
 ajustar los endopoins para comunicarse con el backend en todas las paginas
 descomentar NewAccountForm de EncryptPage y comentar AlternativeEncryptPage junto con sus importaciones
+en los try de los useEffect de HistorialPage y SearchPage comentar y descomentar lo señalado
 

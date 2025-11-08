@@ -36,21 +36,23 @@ const Home = () => {
         <Typography paragraph fontSize={12}>
           Porque combina seguridad real con una interfaz intuitiva. Porque está construido con tecnologías modernas (React, MUI, Zod, RHF) y buenas prácticas de desarrollo. Y porque detrás hay una mente obsesionada con la coherencia, la mejora continua y la comunicación clara: vos.
         </Typography>
+        
         <Stack direction="row" spacing={2} sx={{ mt: 1,     justifyContent: 'center',alignItems: 'center' }}>
+          {!usuario &&  <Button
+                          variant='outlined'
+                          color="primary"
+                          component={RouterLink}
+                          to="/login"
+                        >
+                          Ingresar ahora
+                        </Button>
+          }
           <Button
+          className='boton-raro'
             variant='outlined'
             color="primary"
             component={RouterLink}
-            to="/login"
-          >
-            Ingresar ahora
-          </Button>
-          <Button
-          
-            variant='outlined'
-            color="primary"
-            component={RouterLink}
-            to="/encrypt"
+            to={usuario?.name ? "/encrypt" : '/demo'}
           >
             Probar ahora
           </Button>
@@ -86,15 +88,16 @@ const Home = () => {
         </details>
         <Stack direction="row" spacing={2} sx={{ mt: 1,     justifyContent: 'center',alignItems: 'center' }}>
           {!usuario &&  <Button
-            variant='outlined'
-            color="primary"
-            component={RouterLink}
-            to="/login"
-          >
-            Ingresar ahora
-          </Button>}
+                          variant='outlined'
+                          color="primary"
+                          component={RouterLink}
+                          to="/login"
+                        >
+                          Ingresar ahora
+                        </Button>
+          }
           <Button
-          
+          className='boton-raro'
             variant='outlined'
             color="primary"
             component={RouterLink}
@@ -104,9 +107,7 @@ const Home = () => {
           </Button>
         </Stack>
 
-
       </Paper>
-      
     </Container>
   )
 } 

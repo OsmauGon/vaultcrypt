@@ -41,7 +41,7 @@ export default function ContactPage() {
         <Button
           variant="outlined"
           startIcon={<GitHubIcon />}
-          href="https://github.com/tuusuario"
+          href="https://github.com/OsmauGon"
           target="_blank"
         >
           Mi Github
@@ -49,7 +49,7 @@ export default function ContactPage() {
         <Button
           variant="outlined"
           startIcon={<LinkedInIcon />}
-          href="https://linkedin.com/in/tuusuario"
+          href="https://www.linkedin.com/in/oscar-mauricio-gonzalez"
           target="_blank"
         >
           Mi LinkedIn

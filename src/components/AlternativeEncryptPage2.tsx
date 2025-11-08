@@ -56,6 +56,7 @@ export const AlternativeEncryptPage2: React.FC<AccountDetailsProps> = ({ data, w
         {renderRow2('Contraseña: ', encryptField(userPassword,word))}
         {renderRow2('Tipo de Cuenta: ', encryptField(accountType,word))}
         {renderRow2('Descripción: ', encryptField(accountDescription,word))}
+        {word}
       </CardContent>
     </Card>
   );
