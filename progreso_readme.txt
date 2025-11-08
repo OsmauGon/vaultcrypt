@@ -80,6 +80,7 @@ En pos de Incluir contacto con el desarrollador creamos la pagina ContactPage pa
 Arregle los link de sidebar para que no se vean azules y subrayados
 
 ## Dia 15: perfeccione una funcion que cree dentro de la carpeta PUBLIC llamado accountSimulator. Su funcion es la de tomar todas las cuentas que se obtienen del fetch en SearchPage e HistorialPage y cambiarles el email segun el usuario logueado y tambien la descripcion por una descripcion alternativa. De esta manera dejo muchos ejemplos de cuentas guardadas
+Hicimos algunos retoques y ya ejecutamos el run build. Tuve problemas con el fetch poruqe olvide meter los archivos estan en la carpeta PUBLIC dentro de una carpeta PUBLIC dentro el DIST. El front-end ya esta subido a netlify 
 ## lo que sigue es...
 
 *Falta hacer: 

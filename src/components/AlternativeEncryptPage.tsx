@@ -65,9 +65,11 @@ export const AlternativeEncryptPage = () => {
   
 const handleSubmit2 = async (e: React.FormEvent) => {
   e.preventDefault();
-  console.log('se ejecuto handleSubmit');
   setAccion('cargando')
-  setTimeout(()=>{setAccion('listo');console.log(nuevaCuenta)},5000)
+  setTimeout(()=>{
+    setAccion('listo');
+    //console.log(nuevaCuenta)
+  },5000)
   
   //await submit(nuevaCuenta); // Esperás que termine antes de seguir
 };

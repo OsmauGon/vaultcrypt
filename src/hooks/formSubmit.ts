@@ -25,7 +25,7 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
   const [queryStatus, setQueryStatus] = useState<SubmitStatus>('idle')
 
   useEffect(() => {
-    console.log('🔄 Estado actualizado:', queryStatus)
+    //console.log('🔄 Estado actualizado:', queryStatus)
   }, [queryStatus])
 
   const submit = async (formData: T) => {
@@ -43,9 +43,9 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
     }
 
     console.log('📦 Payload listo para enviar:', payload)//Cambiar por "Nueva cuenta enviada"
-    console.log('🛒 Lo vamos a enviar a ', endpoint)//borrar
+   // console.log('🛒 Lo vamos a enviar a ', endpoint)//borrar
     console.log('🛒 Con el metodo ', method)//borrar
-    console.log('🧾 Datos originales:', formData)//borrar
+   // console.log('🧾 Datos originales:', formData)//borrar
 
     try {
       setQueryStatus('loading')

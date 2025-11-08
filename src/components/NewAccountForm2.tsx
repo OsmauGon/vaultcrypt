@@ -53,7 +53,6 @@ export const NewAccountForm = () => {
   
 const handleSubmit2 = async (e: React.FormEvent) => {
   e.preventDefault();
-  console.log('se ejecuto handleSubmit');
 
   await submit(nuevaCuenta); // Esperás que termine antes de seguir
 };

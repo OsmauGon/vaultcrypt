@@ -13,6 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import type { LoginData } from '../schemas/loginSchema'
 import { loginSchema } from '../schemas/loginSchema'
 import { useFormSubmit } from '../hooks/formSubmit'
+import { Link } from 'react-router-dom'
 
 
 
@@ -83,7 +84,8 @@ const Login = () => {
           >
             {isLoading ? 'Ingresando...' : 'Ingresar'}
           </Button>
-          <div className='register-link'>Nuevo Aqui? <a href="/register">Crear una cuenta?</a></div>
+          <div className='register-link'>Nuevo Aqui? <Link to='/register'>Registrese aqui</Link></div>
+          
           </>
           : ""
           
