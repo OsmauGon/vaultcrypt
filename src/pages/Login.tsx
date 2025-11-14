@@ -84,7 +84,7 @@ const Login = () => {
           >
             {isLoading ? 'Ingresando...' : 'Ingresar'}
           </Button>
-          <div className='register-link'>Nuevo Aqui? <Link to='/register'>Registrese aqui</Link></div>
+          <div className='register-link'>Nuevo Aqui? <Link to='/register'>Registrese</Link></div>
           
           </>
           : ""

@@ -69,7 +69,7 @@ const Home = () => {
         <Typography paragraph fontSize={18}>
           Esta aplicacion responsiva esta a su disposicon para la gestion de cuentas y credenciales de sus servicios cotidianos
         </Typography>
-        <div>El backend aún está en desarrollo, pero podés explorar cómo VaultCrypt protege tu información desde el frontend.</div>
+        <div>El Back-end aún está en desarrollo, pero podés explorar cómo VaultCrypt protege tu información desde el Front-end.</div>
         <details className='primer-detail'>
           <summary>¿Qué es esto?</summary>
           <p>VaultCrypt es una aplicación web que permite cifrar y descifrar información sensible de forma rápida, segura y accesible. Está diseñada con un enfoque en la experiencia de usuario, la escalabilidad del código y la claridad técnica.</p>

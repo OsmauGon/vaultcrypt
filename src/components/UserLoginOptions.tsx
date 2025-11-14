@@ -14,7 +14,17 @@ type Props = {
 export const UserLoginOptions = ({handleLogout}: Props) => {
   return (
     <>
-        <Link to={'/search'}>
+            <Link to={'/historial'}>
+                <ListItem disablePadding>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <HistoryIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Historial" />
+                    </ListItemButton>
+                </ListItem>
+            </Link>
+            <Link to={'/search'}>
                 <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemIcon>
@@ -31,16 +41,6 @@ export const UserLoginOptions = ({handleLogout}: Props) => {
                             <LockIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Encriptar" />
-                    </ListItemButton>
-                </ListItem>
-            </Link>
-            <Link to={'/historial'}>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <HistoryIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Historial" />
                     </ListItemButton>
                 </ListItem>
             </Link>

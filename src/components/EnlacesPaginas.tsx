@@ -13,7 +13,7 @@ import { UserLoginOptions } from './UserLoginOptions';
 export const EnlacesPaginas = () => {
     const {usuario, logout} = useUsuario()
      const handleLogout =()=>{
-            alert("llamamos a handleLogout")
+            //alert("llamamos a handleLogout")
             logout()
         }
   return (
