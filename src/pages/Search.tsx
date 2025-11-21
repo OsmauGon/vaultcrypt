@@ -59,7 +59,7 @@ export const Search = () => {
       results = results.filter(acc => acc.serviceName.includes(selectedName));
     }
     if (results && selectedType && selectedType.length > 2) {
-      results = results.filter(acc => acc.accountType === selectedType);
+      results = results.filter(acc => acc.serviceType === selectedType);
     }
     if (results && selectedEmail && selectedEmail.length > 2) {
       results = results.filter(acc => acc.userEmail === selectedEmail);

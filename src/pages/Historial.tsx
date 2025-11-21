@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import '../styles/AccountCard.css'
 import { accountSimulator } from '../../public/accountSimulator2'
 
-
+/* 
 export type Cuenta = {
     id?: number;
     userId?: number;
@@ -21,6 +21,18 @@ export type Cuenta = {
     userPassword: string;
     accountType?: 'Red Social'|"Correo Electronico"|"Busqueda laboral"|'Nube de descargas'|"Programacion/Desarrollo"|"Aplicacion de dispositivo"|"Billetera/inversiones"|"Otros",
     accountDescription: string;
+} */
+export type Cuenta = {
+    id?: number;
+    userId?: number;
+    userName: string;
+    userEmail: string;
+    userPassword: string;
+    serviceName: string;
+    serviceUrl: string;
+    serviceType?: 'Red Social'|"Correo Electronico"|"Busqueda laboral"|'Nube de descargas'|"Programacion/Desarrollo"|"Aplicacion de dispositivo"|"Billetera/inversiones"|"Otros",
+    serviceDescription: string;
+    created: string;
 }
 
 export const Historial = () => {

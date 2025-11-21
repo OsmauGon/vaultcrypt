@@ -81,6 +81,8 @@ Arregle los link de sidebar para que no se vean azules y subrayados
 
 ## Dia 15: perfeccione una funcion que cree dentro de la carpeta PUBLIC llamado accountSimulator. Su funcion es la de tomar todas las cuentas que se obtienen del fetch en SearchPage e HistorialPage y cambiarles el email segun el usuario logueado y tambien la descripcion por una descripcion alternativa. De esta manera dejo muchos ejemplos de cuentas guardadas
 Hicimos algunos retoques y ya ejecutamos el run build. Tuve problemas con el fetch poruqe olvide meter los archivos estan en la carpeta PUBLIC dentro de una carpeta PUBLIC dentro el DIST. El front-end ya esta subido a netlify 
+
+## Dia 16: Luego de completar la subida de la carpeta de distribucion hicimos una prueba del flujo de la pagina. Pulimos detalles segun los rasultados de la prueba y volveremos a ejecutamos el npm run dev para subir la nueva carpeta de distribucion
 ## lo que sigue es...
 
 *Falta hacer: 
@@ -94,4 +96,32 @@ registerSchema cambiar "visit" por "user" Cuando el backend este listo
 ajustar los endopoins para comunicarse con el backend en todas las paginas
 descomentar NewAccountForm de EncryptPage y comentar AlternativeEncryptPage junto con sus importaciones
 en los try de los useEffect de HistorialPage y SearchPage comentar y descomentar lo señalado
+convertir el objeto Account o Cuenta a 
+{
+id,
+userId,
+userName,
+userEmail,
+serviceName,
+serviceUrl,
+servicePassword,
+serviceType,
+serviceDescription,
+created
+}
+
+*Para la republicación del video explicativo
+[17:15, 14/11/2025] Aaron: visto medio por arriba:
+>Está buena la idea.
+>Tenes que subir el volumen de tu voz, se escucha bajito y por ende se escucha más el teclado.
+>Cuando creas el usuario de ejemplo, es buen momento para que escribas tu propio correo, así lo vuelven a ver (Una cuestión meramente marketinera)>
+>Te quedaron botones sin mostrar -si bien seguro son desplegables/no funcionales - la parte de las preguntas "Que es esto?" lo nombras pero no lo cliqueas.
+[17:15, 14/11/2025] Aaron: Me encanta la paleta de color, muy ameno para enfermos de la pc como yo, se agradece personalmente
+[17:16, 14/11/2025] Aaron: Creo que también deberias borrar los autorellenados cuando cliqueas arriba de recuadros
+[17:16, 14/11/2025] Mauricio: uuuyyy esto es oro
+[17:19, 14/11/2025] Aaron: Creo que deberías agregar que cuando apretas los botones definitorios (no me sale la palabra) como por ejemplo el de "Salir" para cerrar la sesión, que pregunte si queres cerrar la sesión y que te informe de que va a hacer al respecto
+[17:19, 14/11/2025] Aaron: también podrias agregarle la función (A modo de escritura no más por ahora, por que no es tan simple) que al cerrar la sesión te pregunte si queres que limpie el caché de la página.
+[17:19, 14/11/2025] Aaron: si bien no es la gran cosa a nivel seguridad
+[17:19, 14/11/2025] Aaron: venderia un poco mejor de que entendes que puede ser una vulnerabilidad
+[17:20, 14/11/2025] Aaron: Tampoco demostraste lo primero que vendes en el titular: Responsiv
 

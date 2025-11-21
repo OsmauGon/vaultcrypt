@@ -66,9 +66,14 @@ export const AccountCard = ({ account }: Props) => {
           </Tooltip>
         </Typography>
 
-        {account.accountDescription && (
+        {account.serviceDescription && (
           <Typography variant="body2" mt={2}>
-            <strong>Descripción:</strong> {account.accountDescription}
+            <strong>Descripción:</strong> {account.serviceDescription}
+          </Typography>
+        )}
+        {account.created && (
+          <Typography variant="body2" mt={2}>
+            <strong>Creacion:</strong> {account.created}
           </Typography>
         )}
       </Box>
