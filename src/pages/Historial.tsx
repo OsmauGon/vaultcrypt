@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 
 
 import '../styles/AccountCard.css'
-import { accountSimulator } from '../../public/accountSimulator2'
+//import { accountSimulator } from '../../public/accountSimulator2'
 
 /* 
 export type Cuenta = {
@@ -27,7 +27,7 @@ export type Cuenta = {
     userId?: number;
     userName: string;
     userEmail: string;
-    userPassword: string;
+    servicePassword: string;
     serviceName: string;
     serviceUrl: string;
     serviceType?: 'Red Social'|"Correo Electronico"|"Busqueda laboral"|'Nube de descargas'|"Programacion/Desarrollo"|"Aplicacion de dispositivo"|"Billetera/inversiones"|"Otros",
@@ -39,33 +39,35 @@ export const Historial = () => {
     const {usuario} = useUsuario()
     const [cuentas,setCuentas] = useState<Cuenta[] | null>(null)
     useEffect(()=>{
-      const leerArchivo = async ()=> {
-            if (!usuario) return //esta es una mediadi de seguridad pero hay que mejorarla. Es importante que no se hagan solicitudes a menos que el usuario correcto este logueado
-            try {
-                // Espera la respuesta de la petición
-                const respuesta = await fetch('../../public/accounts.txt');
+      if(!usuario || !localStorage.getItem('vc-token')) return
+      const API_URL = "https://maurix-bedmpvcc.vercel.app/api/cuentas?idDueño=" + usuario.id; 
+      const token = localStorage.getItem("vc-token"); // normalmente lo obtienes al hacer login
 
-                // Verifica si la respuesta fue exitosa
-                if (!respuesta.ok) {
-                    console.log("Algo salio mal. revisa a donde hace la solicitu el fetch")
-                    throw new Error(`Error HTTP: ${respuesta.status}`);
-                }
+      async function getData() {
+        try {
+          const response = await fetch(API_URL, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`, // el token va aquí
+            },
+          });
 
-                // Convierte el contenido a texto
-                  const contenido = await respuesta.text();
-  
-                  /* setCuentas(JSON.parse(contenido)) */ //descomentar cuando el backend este listo
-                  
-                  const listaObtenida =  JSON.parse(contenido)// comentar cuando el backend este listo
-                  setCuentas(accountSimulator(usuario, listaObtenida))// comentar cuando el backend este listo
-            } catch (error) {
-                console.error("Ocurrió un error al leer el archivo:", error);
-            }
+          if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+          }
+
+          const data = await response.json();
+          setCuentas(data);
+        } catch (error) {
+          console.error("Error en la solicitud:", error);
         }
+      }
 
-        // Llamar a la función
-        leerArchivo();
-    },[usuario])
+      // Llamada a la función
+      getData();
+
+      },[usuario])
 
   return (
          <> 
@@ -76,7 +78,7 @@ export const Historial = () => {
                               !(cuentas && cuentas.length > 1) ? <p>Cargando cuentas...</p>
                                         : <Box className="account-card-container" sx={{  mx: 'auto', mt: 2 }}>
                                             {cuentas.slice(-4,cuentas.length).map((acc: Cuenta) => (
-                                              <AccountCard key={acc.id} account={acc} />
+                                              <AccountCard key={acc.id} account={acc} cipher={usuario.secretWord}/>
                                             ))}
                                           </Box>
 

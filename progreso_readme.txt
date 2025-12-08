@@ -110,6 +110,53 @@ serviceDescription,
 created
 }
 
+
+
+Prueba de Registro de usaurio con backend levantado:
+{
+  "name":"Alma",
+  "emailPrincipal": "marcela@rico.com",
+  "password": "contraseña123",
+  "secretWord":"acuario"
+}
+{
+  "name":"Alberto",
+  "emailPrincipal": "carlo@rico.com",
+  "password": "contraseña123",
+  "secretWord":"acuario"
+}
+{
+  "name":"Deborah",
+  "emailPrincipal": "meltrozo@rico.com",
+  "password": "contraseña123",
+  "secretWord":"acuario"
+}
+
+{
+  "name":"Pablo",
+  "emailPrincipal": "pablo@hotmail.com",
+  "password": "pablopablo",
+  "secretWord":"pablo"
+}
+{
+  "name":"Jonathan",
+  "emailPrincipal": "jony@hotmail.com",
+  "password": "jony123",
+  "secretWord":"jony"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 *Para la republicación del video explicativo
 [17:15, 14/11/2025] Aaron: visto medio por arriba:
 >Está buena la idea.

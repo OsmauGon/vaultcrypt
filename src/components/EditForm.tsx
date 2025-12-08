@@ -16,10 +16,10 @@ export const EditForm = ({ initialCredentials } :EditFormProps) => {
   const [formState, setFormState] = useState<UserCredentials>(initialCredentials);
 
   const { submit, queryStatus } = useFormSubmit<UserCredentials>({
-      endpoint: '/api/edit',
-      method: 'PATCH',//creo que es este
+      endpoint: '/usuario',
+      method: 'PUT',//creo que es este
       encrypt: false,
-      userKey: 'clave123',
+      requiresAuth: true,
       onSuccess: () => console.log('✅ Datos actualizados'),
       onError: () => console.log('❌ Error al actualizar'),
     })
@@ -86,10 +86,9 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               onChange={e => handleChange('name', e.target.value)}
             />
             <TextField
-              label="Email principal"
+              label="Nuevo Email principal"
               fullWidth
               margin="normal"
-              value={formState.emailPrincipal}
               onChange={e => handleChange('emailPrincipal', e.target.value)}
             />
             <TextField
@@ -97,7 +96,6 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               type="password"
               fullWidth
               margin="normal"
-              value={formState.password}
               onChange={e => handleChange('password', e.target.value)}
             />
 

@@ -5,25 +5,26 @@ import { useUsuario } from '../hooks/useUsuario';
 import { useFormSubmit } from '../hooks/formSubmit';
 //import { Quickreply } from '@mui/icons-material';
 
-const accountTypes: string[] = ['Red Social',"Correo Electronico","Busqueda laboral",'Nube de descargas',"Programacion/Desarrollo","Aplicacion de dispositivo","Billetera/inversiones","Otros"]
+const accountTypes: string[] = ['Red Social',"CorreoElectronico","BusquedaLaboral",'NubeDEdescargas',"ProgramacionDesarrollo","AplicacionDEdispositivo","BilleteraInversiones","Otros"]
 type newAccount = {
+    userId: number;
     serviceName: string;
     serviceUrl: string;
     userName: string;
     userEmail: string;
-    userPassword: string;
-    accountType:'' | 'Red Social'|"Correo Electronico"|"Busqueda laboral"|'Nube de descargas'|"Programacion/Desarrollo"|"Aplicacion de dispositivo"|"Billetera/inversiones"|"Otros",
-    accountDescription: string;
+    servicePassword: string;
+    serviceType:'' | 'Red Social'|"Correo Electronico"|"Busqueda laboral"|'Nube de descargas'|"Programacion/Desarrollo"|"Aplicacion de dispositivo"|"Billetera/inversiones"|"Otros",
+    serviceDescription: string;
 }
 
-export const NewAccountForm = () => {
+export const NewAccountForm2 = () => {
   const {usuario} = useUsuario()
   const {submit, queryStatus} = useFormSubmit({
     encrypt: true,
     method: 'POST',
-    userKey: 'claveMaestraDelUsuario',
-    endpoint: '/api/accounts'
-
+    userKey: usuario?.secretWord,
+    endpoint: '/cuentas',
+    requiresAuth: true
   })
   
   const isLoading = queryStatus === 'loading'
@@ -31,13 +32,14 @@ export const NewAccountForm = () => {
   const isSuccess = queryStatus === 'success'
   // Estado inicial
   const [nuevaCuenta, setNuevaCuenta] = useState<newAccount>({
-    userEmail: '',
-    accountType: '',
-    serviceName: '',
-    serviceUrl: '',
+    userId: (usuario && usuario.id ) ? usuario.id : 0,
     userName: '',
-    userPassword: '',
-    accountDescription: ''
+    userEmail: '',
+    serviceUrl: '',
+    serviceType: '',
+    serviceName: '',
+    servicePassword: '',
+    serviceDescription: ''
   });
   // Manejador de cambios genérico
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -53,7 +55,6 @@ export const NewAccountForm = () => {
   
 const handleSubmit2 = async (e: React.FormEvent) => {
   e.preventDefault();
-
   await submit(nuevaCuenta); // Esperás que termine antes de seguir
 };
 
@@ -84,8 +85,8 @@ const handleSubmit2 = async (e: React.FormEvent) => {
               select
               fullWidth
               label="Tipo de Cuenta"
-              name="accountType"
-              value={nuevaCuenta.accountType}
+              name="serviceType"
+              value={nuevaCuenta.serviceType}
               onChange={handleChange}
             >
               {accountTypes.map((option) => (
@@ -131,9 +132,9 @@ const handleSubmit2 = async (e: React.FormEvent) => {
             disabled={isLoading}
               fullWidth
               label="Contraseña "
-              name="userPassword"
+              name="servicePassword"
               type="password"
-              value={nuevaCuenta.userPassword}
+              value={nuevaCuenta.servicePassword}
               onChange={handleChange}
             />
           </Grid>
@@ -145,10 +146,10 @@ const handleSubmit2 = async (e: React.FormEvent) => {
               id='textarea-form'
               fullWidth
               label="Descripcion"
-              name="accountDescription"
+              name="serviceDescription"
               multiline
               rows={2}
-              value={nuevaCuenta.accountDescription}
+              value={nuevaCuenta.serviceDescription}
               onChange={handleChange}
             />
         <Button

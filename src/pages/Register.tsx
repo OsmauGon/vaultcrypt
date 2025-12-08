@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { registerSchema } from '../schemas/registerSchema'
 import { useFormSubmit } from '../hooks/formSubmit'
+import { useNavigate } from 'react-router-dom'
 
 type RegisterData = {
   name: string
@@ -36,14 +37,15 @@ const Register = () => {
       secretWord: ''
     },
   })
-
+  const navigate = useNavigate()
   const { submit, queryStatus } = useFormSubmit<RegisterData>({
-    endpoint: '/api/register',
+    endpoint: '/usuario',
     method: "POST",
     encrypt: false,
     userKey: 'clave123',
-    onSuccess: () => console.log('✅ Usuario registrado'),
-    onError: () => console.log('❌ Error en el registro'),
+    onSuccess: () => {setTimeout(() => navigate('/'), 3000);},
+    onError: () => alert('❌ Error en el registro, vuelva a intentar'),
+    requiresAuth: false
   })
 
   const isLoading = queryStatus === 'loading'

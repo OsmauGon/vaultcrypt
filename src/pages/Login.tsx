@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import type { LoginData } from '../schemas/loginSchema'
 import { loginSchema } from '../schemas/loginSchema'
 import { useFormSubmit } from '../hooks/formSubmit'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 
@@ -25,15 +25,15 @@ const Login = () => {
   } = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
   })
-
+  const navigate = useNavigate()
   const { submit, queryStatus } = useFormSubmit({
-    endpoint: '/api/login', // opcional por ahora
-    method: "GET",
-    onSuccess: () => {
-      console.log('✅ Login exitoso')
-    },
+    endpoint: '/login', // opcional por ahora
+    method: "POST",
+    requiresAuth: false,
+    encrypt: false,
+    onSuccess: () => {setTimeout(() => navigate('/'), 3000);},
     onError: () => {
-      console.log('❌ Falló el login')
+      alert('❌ Falló el login, vuelva a intentar')
     },
   })
 

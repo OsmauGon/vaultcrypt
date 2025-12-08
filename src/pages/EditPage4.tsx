@@ -7,7 +7,6 @@ import { useUsuario } from '../hooks/useUsuario';
   name: string;
   emailPrincipal: string;
   password: string;
-  role?: 'user' | 'admin' | 'visit';
   emailList: string[];
 };
 
@@ -16,21 +15,12 @@ const EditPage4 = () => {
   const {usuario} = useUsuario()
 
   useEffect(() => {
-    /*const user: UserCredentials = {
-    name: 'Juan',
-    emailPrincipal: 'Juan1@yahoo.com',
-    password: '123456',
-    secretWord: 'secreto',
-    role: 'admin',
-    emailList: ['Juan1@yahoo.com', 'Juan2@yahoo.com', 'Juan3@yahoo.com'],
-    };*/
     if (usuario) {
       // Simulamos fetch de credenciales
       setInitialCredentials({
         name: usuario.name,
-        emailPrincipal: usuario.emailPrincipal,
-        password: usuario.password, // Nunca se muestra la contraseña actual
-        role: usuario.role,
+        emailPrincipal: "elmismo",
+        password: "lamisma",
         emailList: usuario.emailList,
       });
     }

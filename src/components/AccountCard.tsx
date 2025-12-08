@@ -5,16 +5,18 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useState } from 'react';
 import type { Cuenta } from '../pages/Historial';
+import { decryptField } from '../utils/encription';
 
 type Props = {
   account: Cuenta;
+  cipher: string;
 };
 
-export const AccountCard = ({ account }: Props) => {
+export const AccountCard = ({ account, cipher }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(account.userPassword);
+    navigator.clipboard.writeText(account.servicePassword);
   };
 
   return (
@@ -37,7 +39,7 @@ export const AccountCard = ({ account }: Props) => {
           {account.serviceName}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ml: 2}}>
-          {account.userEmail}
+          {decryptField(account.userEmail,cipher)}
         </Typography>
       </Box>
 
@@ -55,7 +57,7 @@ export const AccountCard = ({ account }: Props) => {
 
         <Typography variant="body2">
           <strong>Contraseña:</strong>{' '}
-          {showPassword ? account.userPassword : '••••••••'}
+          {showPassword ? decryptField(account.servicePassword, cipher) : '••••••••'}
           <IconButton size="small" onClick={() => setShowPassword(!showPassword)}>
             <VisibilityIcon fontSize="small" />
           </IconButton>
@@ -68,7 +70,7 @@ export const AccountCard = ({ account }: Props) => {
 
         {account.serviceDescription && (
           <Typography variant="body2" mt={2}>
-            <strong>Descripción:</strong> {account.serviceDescription}
+            <strong>Descripción:</strong> {decryptField(account.serviceDescription,cipher)}
           </Typography>
         )}
         {account.created && (
