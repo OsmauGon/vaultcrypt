@@ -43,7 +43,7 @@ const Register = () => {
     method: "POST",
     encrypt: false,
     userKey: 'clave123',
-    onSuccess: () => {setTimeout(() => navigate('/'), 3000);},
+    onSuccess: () => {setTimeout(() => navigate('/'), 1000);},
     onError: () => alert('❌ Error en el registro, vuelva a intentar'),
     requiresAuth: false
   })

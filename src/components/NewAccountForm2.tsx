@@ -5,7 +5,7 @@ import { useUsuario } from '../hooks/useUsuario';
 import { useFormSubmit } from '../hooks/formSubmit';
 //import { Quickreply } from '@mui/icons-material';
 
-const accountTypes: string[] = ['Red Social',"CorreoElectronico","BusquedaLaboral",'NubeDEdescargas',"ProgramacionDesarrollo","AplicacionDEdispositivo","BilleteraInversiones","Otros"]
+const accountTypes: string[] = ['RedSocial',"CorreoElectronico","BusquedaLaboral",'NubeDEdescargas',"ProgramacionDesarrollo","AplicacionDEdispositivo","BilleteraInversiones","Otros"]
 type newAccount = {
     userId: number;
     serviceName: string;
@@ -56,6 +56,16 @@ export const NewAccountForm2 = () => {
 const handleSubmit2 = async (e: React.FormEvent) => {
   e.preventDefault();
   await submit(nuevaCuenta); // Esperás que termine antes de seguir
+  setTimeout(() => {setNuevaCuenta({
+    userId: (usuario && usuario.id ) ? usuario.id : 0,
+    userName: '',
+    userEmail: '',
+    serviceUrl: '',
+    serviceType: '',
+    serviceName: '',
+    servicePassword: '',
+    serviceDescription: ''
+  });}, 1000);
 };
 
   return (

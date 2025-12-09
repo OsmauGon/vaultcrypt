@@ -145,6 +145,14 @@ Prueba de Registro de usaurio con backend levantado:
   "secretWord":"jony"
 }
 
+{
+  "name":"Yuser",
+  "emailPrincipal": "fudo@yusei.com",
+  "password": "stardust",
+  "secretWord":"synchro"
+}
+
+
 
 
 

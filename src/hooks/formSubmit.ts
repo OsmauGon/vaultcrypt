@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+
+import { useState } from 'react';
 import { encryptField } from '../utils/encription';
 import { useUsuario } from './useUsuario';
 import { useNavigate } from 'react-router-dom';
@@ -46,15 +47,14 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
   const navigate = useNavigate()
   const {setUsuario,setToken, logout} = useUsuario()
   const [queryStatus, setQueryStatus] = useState<SubmitStatus>('idle');
-
+  /* con esto vemos en consola cuando cambia el estado de las solicitudes
   useEffect(() => {
     console.log('🔄 Estado actualizado:', queryStatus);
   }, [queryStatus]);
-
+  */
   const submit = async (formData?: T) => {
     let payload: Record<string, unknown> = formData ? { ...formData } : {};
     if (encrypt && userKey && formData) {
-      console.log("Aqui deberia encriptar los datos")
       payload = Object.fromEntries(
         Object.entries(formData).map(([key, value]) => {
           if (typeof value === 'string' && (key === "userEmail" || key === "servicePassword" || key === "serviceDescription")) {
@@ -104,15 +104,7 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
         fetchOptions.body = JSON.stringify(payload);
       }
 
-      console.log(`📤 Enviando ${method} a: ${url}`);
-      /* mostrando el body SE PUEDE BORRAR
-      if (fetchOptions.body) {
-        console.log('📄 Body:', JSON.parse(fetchOptions.body as string));
-      }
-      */
-     
-      
-
+      //console.log(`📤 Enviando ${method} a: ${url}`);
       
       // Realizar la petición real con timeout
       const controller = new AbortController();
@@ -120,20 +112,7 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
       
       fetchOptions.signal = controller.signal;
 
-
-
-
-
-
-
-
-
-
-
-      
-
-
-      console.log(fetchOptions.body)
+      //console.log(fetchOptions.body)
       const response = await fetch(url, fetchOptions);
       clearTimeout(timeoutId);
 
@@ -175,7 +154,7 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
         responseData = await response.text();
       }
 
-      console.log('✅ Respuesta recibida:', responseData);
+      //console.log('✅ Respuesta recibida:', responseData);
 
       setQueryStatus('success');
       onSuccess?.(responseData);

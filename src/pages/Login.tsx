@@ -31,7 +31,7 @@ const Login = () => {
     method: "POST",
     requiresAuth: false,
     encrypt: false,
-    onSuccess: () => {setTimeout(() => navigate('/'), 3000);},
+    onSuccess: () => {setTimeout(() => navigate('/'), 1000);},
     onError: () => {
       alert('❌ Falló el login, vuelva a intentar')
     },
