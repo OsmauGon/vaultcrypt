@@ -9,19 +9,7 @@ import { useEffect, useState } from 'react'
 import '../styles/AccountCard.css'
 //import { accountSimulator } from '../../public/accountSimulator2'
 
-/* 
-export type Cuenta = {
-    id?: number;
-    userId?: number;
-    fecha: string;
-    serviceName: string;
-    serviceUrl: string;
-    userName: string;
-    userEmail: string;
-    userPassword: string;
-    accountType?: 'Red Social'|"Correo Electronico"|"Busqueda laboral"|'Nube de descargas'|"Programacion/Desarrollo"|"Aplicacion de dispositivo"|"Billetera/inversiones"|"Otros",
-    accountDescription: string;
-} */
+
 export type Cuenta = {
     id?: number;
     userId?: number;
@@ -75,7 +63,7 @@ export const Historial = () => {
                             <Typography variant="h4" gutterBottom>Historial de {usuario.name}</Typography>
                             <Typography >Acceda a las ultimas cuentas creadas</Typography>
                             {
-                              !(cuentas && cuentas.length > 1) ? <p>Cargando cuentas...</p>
+                              !(cuentas && cuentas.length > 1) ? <p>No se han encontrado cuentas relacionadas a este usuario</p>
                                         : <Box className="account-card-container" sx={{  mx: 'auto', mt: 2 }}>
                                             {cuentas.slice(-4,cuentas.length).map((acc: Cuenta) => (
                                               <AccountCard key={acc.id} account={acc} cipher={usuario.secretWord}/>

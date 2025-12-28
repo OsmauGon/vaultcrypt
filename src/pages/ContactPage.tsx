@@ -12,7 +12,7 @@ export default function ContactPage() {
 
       {/* Mini bio emocional */}
       <Typography variant="body1" sx={{ mb: 3 }} fontSize={12}>
-        Soy Mauricio, desarrollador front-end enfocado en React y TypeScript. Me enfoco en crear interfaces que educan, empoderan y respetan la intención del usuario. VaultCrypt nació como una necesidad y un ejercicio técnico, pero se convirtió en una forma de ofrecer opsiones seguridad con empatía.
+        Soy Mauricio, desarrollador web enfocado en React y TypeScript. Me enfoco en crear interfaces que educan, empoderan y respetan la intención del usuario. VaultCrypt nació como una necesidad y un ejercicio técnico, pero se convirtió en una forma de ofrecer opsiones seguridad con empatía.
       </Typography>
 
       <Divider sx={{ my: 4 }} />

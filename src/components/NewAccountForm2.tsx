@@ -5,7 +5,19 @@ import { useUsuario } from '../hooks/useUsuario';
 import { useFormSubmit } from '../hooks/formSubmit';
 //import { Quickreply } from '@mui/icons-material';
 
-const accountTypes: string[] = ['RedSocial',"CorreoElectronico","BusquedaLaboral",'NubeDEdescargas',"ProgramacionDesarrollo","AplicacionDEdispositivo","BilleteraInversiones","Otros"]
+
+const tiposDEcuentas = [
+  ["RedSocial","Red Social"],
+  ["CorreoElectronico","Correo Electronico"],
+  ["BusquedaLaboral","Busqueda Laboral"],
+  ["NubeDEdescargas","Nube de Descarga"],
+  ["ProgramacionDesarrollo","Programacion y desarrollo"],
+  ["AplicacionDEdispositivo","Aplicacion de Dispositivo"],
+  ["BilleteraInversiones","Billeteras e inversiones"],
+  ["Otros", "Otros"]
+]
+
+
 type newAccount = {
     userId: number;
     serviceName: string;
@@ -98,10 +110,11 @@ const handleSubmit2 = async (e: React.FormEvent) => {
               name="serviceType"
               value={nuevaCuenta.serviceType}
               onChange={handleChange}
+              required
             >
-              {accountTypes.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
+              {tiposDEcuentas.map((option) => (
+                <MenuItem key={option[0]} value={option[0]}>
+                  {option[1]}
                 </MenuItem>
               ))}
             </TextField>
@@ -114,6 +127,7 @@ const handleSubmit2 = async (e: React.FormEvent) => {
               name="serviceName"
               value={nuevaCuenta.serviceName}
               onChange={handleChange}
+              required
             />
           </Grid>
           <Grid size={{ xs: 6, md: 12 }}>{/* Input - Service URL */}
@@ -122,7 +136,7 @@ const handleSubmit2 = async (e: React.FormEvent) => {
               fullWidth
               label="URL de servicio"
               name="serviceUrl"
-              type="url"
+              type="text"
               value={nuevaCuenta.serviceUrl}
               onChange={handleChange}
             />
@@ -161,6 +175,7 @@ const handleSubmit2 = async (e: React.FormEvent) => {
               rows={2}
               value={nuevaCuenta.serviceDescription}
               onChange={handleChange}
+              required
             />
         <Button
               id='account-form-button'
@@ -175,7 +190,7 @@ const handleSubmit2 = async (e: React.FormEvent) => {
             </Button>
       </form>}
       {isLoading ?  <Typography>Enviando…</Typography> :""}
-      {isSuccess ?  <Alert severity="success" sx={{ mt: 2 }}>✅ Enviado correctamente, esto fue lo que enviamos</Alert> :""}
+      {isSuccess ?  <Alert severity="success" sx={{ mt: 2 }}>✅ Nueva cuenta creada con exito</Alert> :""}
       {isError ?  <Alert severity="error" sx={{ mt: 2 }}>❌ Error al enviar</Alert> :""}
     </Paper>
   );
