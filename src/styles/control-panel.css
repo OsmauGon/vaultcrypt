@@ -1,0 +1,24 @@
+.control-panel-styles details .interior{
+    display: flex;
+    flex-direction: column;
+}
+details .interior input{
+    width: 180px;
+}
+.control-panel-styles details button{
+    background-color: rebeccapurple;
+    font-weight: bold;
+    font-size: 24px;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+.control-panel-styles details button:hover{
+    background-color: violet;
+    transition: .5s;
+}
+.control-panel-styles details button:active{
+    background-color: red
+}

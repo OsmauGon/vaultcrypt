@@ -14,10 +14,12 @@ import type { LoginData } from '../schemas/loginSchema'
 import { loginSchema } from '../schemas/loginSchema'
 import { useFormSubmit } from '../hooks/formSubmit'
 import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 
 
 const Login = () => {
+  const [falla,setFalla] = useState<string | undefined>(undefined)
   const {
     register,
     handleSubmit,
@@ -32,8 +34,8 @@ const Login = () => {
     requiresAuth: false,
     encrypt: false,
     onSuccess: () => {setTimeout(() => navigate('/'), 1000);},
-    onError: () => {
-      alert('❌ Falló el login, vuelva a intentar')
+    onError: (error) => {
+      setFalla(error?.message)
     },
   })
 
@@ -99,7 +101,12 @@ const Login = () => {
 
           {isError && (
             <Alert severity="error" sx={{ mt: 2 }}>
-              Hubo un error al iniciar sesión. Intentá nuevamente.
+              {
+              `Hubo un error al iniciar sesión: ${
+                falla?.includes("inválidas") ? "Datos inválidos"
+                                                    : "Desconocido" 
+                }
+                `}
             </Alert>
           )}
           {isNotFound && (

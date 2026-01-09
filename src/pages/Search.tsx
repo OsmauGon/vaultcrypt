@@ -10,6 +10,7 @@ import type { Cuenta } from './Historial'
 
 
 import '../styles/AccountCard.css'
+import { decryptField } from '../utils/encription'
 
 export const Search = () => {
   
@@ -30,7 +31,7 @@ export const Search = () => {
             },
           });
 
-          if (!response.ok) {
+          if (!response.ok && response.status != 404) {
             throw new Error(`Error HTTP: ${response.status}`);
           }
 
@@ -50,20 +51,22 @@ export const Search = () => {
   const [selectedName, setSelectedName] = useState('');
   const [selectedType, setSelectedType] = useState('');
   const [selectedEmail, setSelectedEmail] = useState('');
-  const accountTypes: string[] = ['Red Social',"Correo Electronico","Busqueda laboral",'Nube de descargas',"Programacion/Desarrollo","Aplicacion de dispositivo","Billetera/inversiones","Otros"]
+  const accountTypes: string[] = ['RedSocial',"Correo Electronico","Busqueda laboral",'Nube de descargas',"Programacion/Desarrollo","Aplicacion de dispositivo","Billetera/inversiones","Otros"]
   const accountEmails: string[] = usuario ? usuario.emailList : []
+  const cifrado: string = usuario ? usuario.secretWord : "nada"
 
 
   const filteredAccounts = useMemo(() => {
-    let results = cuentas
-    if (results && selectedName && selectedName.length > 2) {
+    let results = cuentas?.map(acc => ({...acc,userEmail: decryptField(acc.userEmail, cifrado)}))
+    if (results && results.length > 0 && selectedName && selectedName.length > 2) {
       results = results.filter(acc => acc.serviceName.includes(selectedName));
     }
-    if (results && selectedType && selectedType.length > 2) {
+    if (results && results.length > 0 && selectedType && selectedType.length > 2) {
       results = results.filter(acc => acc.serviceType === selectedType);
     }
-    if (results && selectedEmail && selectedEmail.length > 2) {
+    if (results && results.length > 0 && selectedEmail && selectedEmail.length > 2) {
       results = results.filter(acc => acc.userEmail === selectedEmail);
+      
     }
     return results;
   }, [selectedName, selectedType, selectedEmail, cuentas]);
@@ -82,7 +85,11 @@ export const Search = () => {
                               {(filteredAccounts && filteredAccounts.length > 0) ? filteredAccounts.map((acc: Cuenta, i: number) => (
                                                               <AccountCard key={i} account={acc} cipher={usuario.secretWord} />
                                                               ))
-                                                            :<div>No se encontraron cuentas que coincidan con los filtros</div>
+                                                            :<div>No se encontraron cuentas 
+                                                              {
+                                                                (selectedName.length > 0 || selectedEmail.length > 0 || selectedType.length > 0) ? "que coincidan con los filtros" : ""
+                                                              }
+                                                            </div>
                             }
                             </Box>
                         </div>

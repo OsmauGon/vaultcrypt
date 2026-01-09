@@ -2,16 +2,17 @@ import { useState } from 'react';
 import type { UserCredentials } from '../pages/EditPage4';
 import { Alert, Box, Button, CircularProgress, Container, IconButton, Paper, Stack, TextField, Typography } from '@mui/material';
 import { useFormSubmit } from '../hooks/formSubmit';
-
 import DeleteIcon from '@mui/icons-material/Delete'
 import AddIcon from '@mui/icons-material/Add'
 //import type { number } from 'zod';
 
 type EditFormProps = {
-    initialCredentials: UserCredentials
+    initialCredentials: UserCredentials,
+    logout: ()=> void
 }
 
-export const EditForm = ({ initialCredentials } :EditFormProps) => {
+export const EditForm = ({ initialCredentials, logout } :EditFormProps) => {
+  const [problema,setProblema] = useState<string | undefined>(undefined)
   const [initialUser] = useState<UserCredentials>(initialCredentials)
   const [formState, setFormState] = useState<UserCredentials>(initialCredentials);
 
@@ -21,7 +22,10 @@ export const EditForm = ({ initialCredentials } :EditFormProps) => {
       encrypt: false,
       requiresAuth: true,
       onSuccess: () => console.log('✅ Datos actualizados'),
-      onError: () => console.log('❌ Error al actualizar'),
+      onError: (error) => {
+      setProblema(error?.message)
+      setTimeout(()=> logout(), 5000)
+    },
     })
   
     const isLoading = queryStatus === 'loading'
@@ -31,7 +35,10 @@ export const EditForm = ({ initialCredentials } :EditFormProps) => {
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
   const handleChange = (field: string, value: string | string[]) => {
-    setFormState(prev => ({ ...prev, [field]: value }));
+    if (field === "emailPrincipal" && value === ""){
+      setFormState(prev => ({ ...prev, [field]: 'elmismo' }));  
+    }
+    else setFormState(prev => ({ ...prev, [field]: value }));
   };
 
   const handleEmailChange = (index :number, value :string) => {
@@ -51,12 +58,18 @@ export const EditForm = ({ initialCredentials } :EditFormProps) => {
   };
   const handleSubmit =(e :React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
+    const actualpass = document.querySelector(".actualpass input") as HTMLInputElement
+    if(formState.password === actualpass.value){
+      alert("la contraseña actual debe ser diferente que la contraseña nueva")
+      return
+    }
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const noEmails = formState.emailList.filter(item => !regexEmail.test(item));
     if(noEmails.length != 0) {
       alert("Error, verifique el formato de los emails que esta enviando")
       return
     }
+    console.log(formState)
     submit(formState)
   }
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -85,19 +98,36 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
               value={formState.name}
               onChange={e => handleChange('name', e.target.value)}
             />
-            <TextField
-              label="Nuevo Email principal"
-              fullWidth
-              margin="normal"
-              onChange={e => handleChange('emailPrincipal', e.target.value)}
-            />
-            <TextField
-              label="Nueva contraseña"
-              type="password"
-              fullWidth
-              margin="normal"
-              onChange={e => handleChange('password', e.target.value)}
-            />
+            <details>
+              <summary>Deseo modificar mi email principal</summary>
+                
+              <TextField
+                label="Nuevo Email principal"
+                fullWidth
+                margin="normal"
+                onChange={e => handleChange('emailPrincipal', e.target.value)}
+              />
+            </details>
+            <details>
+              <summary>Deseo modificar mi contraseña actual</summary>
+                
+              <TextField
+                label="Contraseña actual"
+                type="password"
+                fullWidth
+                margin="normal"
+                className='actualpass'
+                
+                onChange={e => handleChange('claveActual', e.target.value)}
+              /> 
+              <TextField
+                label="Nueva contraseña"
+                type="password"
+                fullWidth
+                margin="normal"
+                onChange={e => handleChange('password', e.target.value)}
+              />
+            </details>
 
             <Typography variant="h6" sx={{ mt: 2 }}>
               Emails secundarios
@@ -158,14 +188,10 @@ const lModificado :boolean = formState.emailList == initialUser.emailList
 
           {isSuccess && (
             <Alert severity="success" sx={{ mt: 2 }}>
-              Datos actualizados correctamente.
+              Datos actualizados correctamente. Por favor, vuelva a loguearse
             </Alert>
           )}
-          {isError && (
-            <Alert severity="error" sx={{ mt: 2 }}>
-              Error al actualizar los datos. Intentá nuevamente.
-            </Alert>
-          )}
+          {isError ?  <Alert severity="error" sx={{ mt: 2 }}>{`❌ Error al enviar ${problema?.includes("Token") ? ". Vuelva a iniciar sesion" : "Desconocido" }`}</Alert> :""}
         </Box>
       </Paper>
     </Container>

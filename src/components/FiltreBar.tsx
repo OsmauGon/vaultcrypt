@@ -9,12 +9,23 @@ interface FilterBarProps {
     accountEmails: string[];
 }
 
+
+const tiposDEcuentas = [
+  ["RedSocial","Red Social"],
+  ["CorreoElectronico","Correo Electronico"],
+  ["BusquedaLaboral","Busqueda Laboral"],
+  ["NubeDEdescargas","Nube de Descarga"],
+  ["ProgramacionDesarrollo","Programacion y desarrollo"],
+  ["AplicacionDEdispositivo","Aplicacion de Dispositivo"],
+  ["BilleteraInversiones","Billeteras e inversiones"],
+  ["Otros", "Otros"]
+]
+
 export const FilterBar = ({
   selectedType,
   setSelectedType,
   selectedEmail,
   setSelectedEmail,
-  accountTypes,
   accountEmails,
 }: FilterBarProps) => {
 
@@ -28,8 +39,11 @@ export const FilterBar = ({
                     onChange={(e)=> setSelectedType(e.target.value)}
                     >
                     {/* <MenuItem value=''>Todos</MenuItem> */}
-                    {accountTypes.map((type)=>(
+                    {/* {accountTypes.map((type)=>(
                         <MenuItem key={type} value={type}>{type}</MenuItem>
+                    ))} */}
+                    {tiposDEcuentas.map((type)=>(
+                        <MenuItem key={type[0]} value={type[0]}>{type[1]}</MenuItem>
                     ))}
                     </Select>
             </FormControl>

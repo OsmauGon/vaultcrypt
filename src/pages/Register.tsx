@@ -19,7 +19,8 @@ type RegisterData = {
   emailPrincipal: string
   password: string
   secretWord: string
-  role?: "admin" | 'user' | 'visit'
+  confirmPassword: string,
+  confirmSecret: string
 }
 
 const Register = () => {
@@ -34,7 +35,9 @@ const Register = () => {
       name: '',
       emailPrincipal: '',
       password: '',
-      secretWord: ''
+      secretWord: '',
+      confirmPassword: '',
+      confirmSecret: ''
     },
   })
   const navigate = useNavigate()
@@ -97,6 +100,16 @@ const Register = () => {
             helperText={errors.password?.message}
             disabled={isLoading}
           />
+          <TextField
+            label="Confirmar contraseña"
+            type="password"
+            fullWidth
+            margin="normal"
+            {...register("confirmPassword")}
+            error={!!errors.confirmPassword}
+            helperText={errors.confirmPassword?.message}
+            disabled={isLoading}
+          />
 
           <TextField
             label="Palabra secreta"
@@ -108,6 +121,17 @@ const Register = () => {
             helperText={errors.secretWord?.message}
             disabled={isLoading}
           />
+          <TextField
+            label="Confirmar palabra secreta"
+            type="password"
+            fullWidth
+            margin="normal"
+            {...register("confirmSecret")}
+            error={!!errors.confirmSecret}
+            helperText={errors.confirmSecret?.message}
+            disabled={isLoading}
+          />
+
 
           <Button
             type="submit"

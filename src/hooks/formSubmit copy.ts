@@ -102,26 +102,38 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
 
       //console.log(`📤 Enviando ${method} a: ${url}`);
       
-     
+      // Realizar la petición real con timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 100000); // 100 segundos timeout
+      fetchOptions.signal = controller.signal;
+
+      
       const response = await fetch(url, fetchOptions);
-      //console.log(fetchOptions)// borrar
+      clearTimeout(timeoutId);
+
       // Verificar si la respuesta es OK
       if (!response.ok) {
         let errorMessage = `Error ${response.status}: ${response.statusText}`;
-        const errorData = await response.json();
-        errorMessage = errorData.error.message || errorMessage;
+        
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+          
+        } catch {
+          // Si no se puede parsear JSON, usar el mensaje por defecto
+        }
+
         if (response.status === 404) {
           setQueryStatus('notfound');
-          throw new Error(`Recurso no encontrado: ${errorData.error}`);
-        } else if (response.status === 403) {
+          throw new Error('Recurso no encontrado');
+        } else if (response.status === 401 || response.status === 403) {
           // Token inválido, expirado o no autorizado
           localStorage.removeItem('vc-token');
           setQueryStatus('error');
           throw new Error('No autorizado - Por favor, inicia sesión nuevamente');
-        } else if (response.status === 401) {
+        } else if (response.status === 400) {
           setQueryStatus('error');
-          //throw new Error(`Datos inválidos: ${errorData.error}`);
-          throw new Error(`Credenciales inválidas`);
+          throw new Error(`Datos inválidos: ${errorMessage}`);
         } else {
           setQueryStatus('error');
           throw new Error(errorMessage);
@@ -131,6 +143,7 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
       // Procesar respuesta (algunos endpoints pueden no devolver JSON)
       let responseData;
       const contentType = response.headers.get('content-type');
+      
       if (contentType && contentType.includes('application/json')) {
         responseData = await response.json();
       } else {
@@ -152,13 +165,17 @@ export const useFormSubmit = <T extends Record<string, unknown>>({
         setTimeout(()=>navigate('/'), 3000)
         
       }
-      console.log(responseData.timeline)
+
       return responseData;
     
     } catch (err: unknown) {
         console.error("❌ Error en el segundo catch en el envío:", err);
+
         // Narrowing: verificamos si es instancia de Error
         if (err instanceof Error) {
+          if (err.name === "AbortError") {
+            err.message = "La solicitud tardó demasiado tiempo. Intenta nuevamente.";
+          }
 
           // Determinar el tipo de error
           if (err.message === "No hay token de autenticación") {

@@ -44,26 +44,27 @@ export const UserLoginOptions = ({handleLogout}: Props) => {
                     </ListItemButton>
                 </ListItem>
             </Link>
-        {<Link to={'/edit'}>
-                    <ListItem disablePadding >
-                        <ListItemButton>
-                            <ListItemIcon >
-                                <ManageAccountsIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Editar" />
-                        </ListItemButton>
-                    </ListItem>
-        </Link> }
-        <Link to={'/'}>
-                    <ListItem disablePadding onClick={ ()=> handleLogout() }>
-                        <ListItemButton>
-                            <ListItemIcon >
-                                <LogoutIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Salir" />
-                        </ListItemButton>
-                    </ListItem>
-        </Link>
+            <Link to={'/edit'}>
+                        <ListItem disablePadding >
+                            <ListItemButton>
+                                <ListItemIcon >
+                                    <ManageAccountsIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="Editar" />
+                            </ListItemButton>
+                        </ListItem>
+            </Link>
+            <Link to={'/'}>
+                        <ListItem disablePadding onClick={ ()=> handleLogout() }>
+                            <ListItemButton>
+                                <ListItemIcon >
+                                    <LogoutIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="Salir" />
+                            </ListItemButton>
+                        </ListItem>
+            </Link>
+            
     </>
   )
 }

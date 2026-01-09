@@ -30,13 +30,18 @@ type newAccount = {
 }
 
 export const NewAccountForm2 = () => {
-  const {usuario} = useUsuario()
+  const [problema,setProblema] = useState<string | undefined>(undefined)
+  const {usuario, logout} = useUsuario()
   const {submit, queryStatus} = useFormSubmit({
     encrypt: true,
     method: 'POST',
     userKey: usuario?.secretWord,
     endpoint: '/cuentas',
-    requiresAuth: true
+    requiresAuth: true,
+    onError: (error) => {
+      setProblema(error?.message)
+      setTimeout(()=> logout(), 5000)
+    },
   })
   
   const isLoading = queryStatus === 'loading'
@@ -191,7 +196,8 @@ const handleSubmit2 = async (e: React.FormEvent) => {
       </form>}
       {isLoading ?  <Typography>Enviando…</Typography> :""}
       {isSuccess ?  <Alert severity="success" sx={{ mt: 2 }}>✅ Nueva cuenta creada con exito</Alert> :""}
-      {isError ?  <Alert severity="error" sx={{ mt: 2 }}>❌ Error al enviar</Alert> :""}
+      {isError ?  <Alert severity="error" sx={{ mt: 2 }}>{`❌ Error al enviar ${problema?.includes("Token") ? ". Vuelva a iniciar sesion" : "Desconocido" }`}</Alert> :""}
+      
     </Paper>
   );
 };

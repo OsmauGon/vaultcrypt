@@ -20,7 +20,7 @@ export type Cuenta = {
     serviceUrl: string;
     serviceType?: 'Red Social'|"Correo Electronico"|"Busqueda laboral"|'Nube de descargas'|"Programacion/Desarrollo"|"Aplicacion de dispositivo"|"Billetera/inversiones"|"Otros",
     serviceDescription: string;
-    created: string;
+    creadoEn: string;
 }
 
 export const Historial = () => {
@@ -41,7 +41,7 @@ export const Historial = () => {
             },
           });
 
-          if (!response.ok) {
+          if (!response.ok && response.status != 404) {
             throw new Error(`Error HTTP: ${response.status}`);
           }
 

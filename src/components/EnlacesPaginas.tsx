@@ -5,6 +5,7 @@ import LockIcon from '@mui/icons-material/Lock'
 import LoginIcon from '@mui/icons-material/Login';
 import HomeIcon from '@mui/icons-material/Home'
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 import { useUsuario } from '../hooks/useUsuario';
 import { UserLoginOptions } from './UserLoginOptions';
@@ -13,8 +14,8 @@ import { UserLoginOptions } from './UserLoginOptions';
 export const EnlacesPaginas = () => {
     const {usuario, logout} = useUsuario()
      const handleLogout =()=>{
-            //alert("llamamos a handleLogout")
-            logout()
+            const saliendo = confirm("Esta apunto de cerrar sesion. ¿Es correcto?")
+            if(saliendo) logout()
         }
   return (
     <List>
@@ -64,7 +65,22 @@ export const EnlacesPaginas = () => {
                 </ListItemButton>
             </ListItem>
         </Link>
-            
+        {(usuario && usuario.role === "admin") ? 
+                                                <>
+                                                <Link to={'/controlpanel'}>
+                                                    <ListItem disablePadding >
+                                                        <ListItemButton>
+                                                                <ListItemIcon >
+                                                                    <ManageAccountsIcon/>
+                                                                </ListItemIcon>
+                                                            <ListItemText primary="C-Panel" />
+                                                        </ListItemButton>
+                                                    </ListItem>
+                                                </Link> 
+                                                </>
+                                                : ""
+
+        }
         </List>
   )
 }
